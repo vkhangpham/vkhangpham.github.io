@@ -1,7 +1,7 @@
 ---
 title: Archive
 permalink: /archive/
-description: All posts from Khang Pham.
+description: All posts from a bonfire.
 ---
 <div class="panel">
   <div class="section-heading">

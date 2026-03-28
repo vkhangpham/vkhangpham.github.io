@@ -1,4 +1,4 @@
-# Khang Pham's Blog
+# a bonfire
 
 This repo is now a minimal Jekyll blog for GitHub Pages.
 
