@@ -1,0 +1,36 @@
+---
+layout: default
+---
+<section class="hero">
+  <p class="eyebrow">Personal blog</p>
+  <h1>{{ site.title }}</h1>
+  <p class="hero-copy">{{ page.intro | default: site.description }}</p>
+</section>
+
+{% if content != "" %}
+<section class="panel">
+  <div class="prose">
+    {{ content }}
+  </div>
+</section>
+{% endif %}
+
+<section class="panel">
+  <div class="section-heading">
+    <h2>Latest writing</h2>
+    <a href="{{ '/archive/' | relative_url }}">See all posts</a>
+  </div>
+
+  <div class="post-list">
+    {% for post in site.posts %}
+      <article class="post-card">
+        <p class="meta">{{ post.date | date: "%B %-d, %Y" }}</p>
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        {% if post.tags and post.tags.size > 0 %}
+          <p class="tags">{{ post.tags | join: " · " }}</p>
+        {% endif %}
+        <p>{{ post.excerpt | strip_html | strip_newlines }}</p>
+      </article>
+    {% endfor %}
+  </div>
+</section>

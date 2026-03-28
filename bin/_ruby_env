@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if command -v brew >/dev/null 2>&1; then
+  brew_ruby_prefix="$(brew --prefix ruby 2>/dev/null || true)"
+  if [ -n "${brew_ruby_prefix}" ] && [ -d "${brew_ruby_prefix}/bin" ]; then
+    export PATH="${brew_ruby_prefix}/bin:${PATH}"
+  fi
+fi

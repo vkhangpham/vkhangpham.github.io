@@ -1,0 +1,20 @@
+title: Khang Pham
+description: Notes on language, software, research, and the things worth writing down.
+url: https://vkhangpham.github.io
+timezone: Asia/Ho_Chi_Minh
+lang: en
+permalink: /:title/
+markdown: kramdown
+excerpt_separator: "<!--more-->"
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default

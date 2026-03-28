@@ -1,0 +1,17 @@
+---
+layout: default
+---
+<article class="panel post-page">
+  <p><a class="back-link" href="{{ '/' | relative_url }}">Back to home</a></p>
+  <header class="post-header">
+    <p class="meta">{{ page.date | date: "%B %-d, %Y" }}</p>
+    <h1>{{ page.title }}</h1>
+    {% if page.tags and page.tags.size > 0 %}
+      <p class="tags">{{ page.tags | join: " · " }}</p>
+    {% endif %}
+  </header>
+
+  <div class="prose">
+    {{ content }}
+  </div>
+</article>
