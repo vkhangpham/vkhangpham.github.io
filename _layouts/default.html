@@ -15,14 +15,22 @@
     <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
   </head>
   <body>
+    {% assign current_url = page.url | replace: 'index.html', '' %}
+    {% assign archive_active = false %}
+    {% if current_url == '/archive/' or page.date %}
+      {% assign archive_active = true %}
+    {% endif %}
     <div class="page-chrome">
       <header class="site-header">
-        <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+        <div class="brand-lockup">
+          <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+          {% include social-links.html %}
+        </div>
         <nav class="site-nav" aria-label="Primary">
-          <a href="{{ '/' | relative_url }}">Home</a>
-          <a href="{{ '/about/' | relative_url }}">About</a>
-          <a href="{{ '/archive/' | relative_url }}">Archive</a>
-          <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+          <a href="{{ '/' | relative_url }}"{% if current_url == '/' %} class="is-current" aria-current="page"{% endif %}>Home</a>
+          <a href="{{ '/about/' | relative_url }}"{% if current_url == '/about/' %} class="is-current" aria-current="page"{% endif %}>About</a>
+          <a href="{{ '/archive/' | relative_url }}"{% if archive_active %} class="is-current" aria-current="page"{% endif %}>Archive</a>
+          <a href="{{ '/feed.xml' | relative_url }}"{% if current_url == '/feed.xml' %} class="is-current" aria-current="page"{% endif %}>RSS</a>
         </nav>
       </header>
 

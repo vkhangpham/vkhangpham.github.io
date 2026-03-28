@@ -69,7 +69,8 @@ Use when extracting a reusable skill:
 
 **Logged**: 2026-03-27T07:05:29Z
 **Priority**: high
-**Status**: resolved
+**Status**: promoted
+**Promoted**: AGENTS.md
 **Area**: config
 
 ### Summary
@@ -95,3 +96,67 @@ For Ruby-based static sites on macOS, add a small environment bootstrap in repo 
 - **Resolved**: 2026-03-27T07:05:29Z
 - **Commit/PR**: uncommitted
 - **Notes**: Installed Homebrew Ruby 4.0.2, added `bin/_ruby_env`, and verified the site with `./bin/check` plus a live local serve.
+
+## [LRN-20260328-001] correction
+
+**Logged**: 2026-03-28T10:56:40Z
+**Priority**: medium
+**Status**: promoted
+**Promoted**: AGENTS.md
+**Area**: general
+
+### Summary
+Check the user's existing `tmux` preview session before starting another local Jekyll server.
+
+### Details
+During verification, a second `./bin/serve` was started even though the user already hosts this site from the `servers` tmux session. That created confusing port/process signals during checking and was unnecessary once the existing preview workflow was known.
+
+### Suggested Action
+Before launching a local preview server in this repo, inspect `tmux ls` and the `servers` session, then prefer `curl http://127.0.0.1:4000` against the running preview when it already exists.
+
+### Metadata
+- Source: user_feedback
+- Related Files: README.md, bin/serve
+- Tags: tmux, jekyll, preview, local-dev
+- See Also: LRN-20260327-001
+- Pattern-Key: preview.tmux-existing-server
+- Recurrence-Count: 1
+- First-Seen: 2026-03-28
+- Last-Seen: 2026-03-28
+
+### Resolution
+- **Resolved**: 2026-03-28T10:56:40Z
+- **Commit/PR**: uncommitted
+- **Notes**: Verified the running tmux-backed preview with `curl` and used that as the authoritative local check instead of keeping a duplicate server process.
+
+## [LRN-20260328-002] correction
+
+**Logged**: 2026-03-28T11:01:00Z
+**Priority**: medium
+**Status**: promoted
+**Promoted**: AGENTS.md
+**Area**: frontend
+
+### Summary
+Use explicit SVG icon dimensions and a shared include for repeated social link groups.
+
+### Details
+The first social-link pass relied mainly on CSS to size inline SVG icons, and the rendered result appeared oversized to the user. The safer pattern in this repo is to give each inline SVG a dedicated class plus explicit `width` and `height` attributes, then reuse the same markup from an include so Home and About stay consistent.
+
+### Suggested Action
+For future icon UI on this site, set explicit dimensions in the SVG markup, keep a `.social-icon` class for CSS reinforcement, and extract repeated link clusters into `_includes/` instead of duplicating them across pages.
+
+### Metadata
+- Source: user_feedback
+- Related Files: _includes/social-links.html, _layouts/home.html, about.md, assets/css/site.css
+- Tags: svg, icons, frontend, includes, social-links
+- See Also: LRN-20260328-001
+- Pattern-Key: frontend.inline-svg-explicit-size
+- Recurrence-Count: 1
+- First-Seen: 2026-03-28
+- Last-Seen: 2026-03-28
+
+### Resolution
+- **Resolved**: 2026-03-28T11:01:00Z
+- **Commit/PR**: uncommitted
+- **Notes**: Added `_includes/social-links.html`, switched Home and About to the shared include, and gave each SVG explicit `18x18` dimensions with a `.social-icon` class.
