@@ -9,7 +9,7 @@ I am **Khang**, or usually **Kyle** to friends and anyone who cannot pronounce t
 
 I do RnD in AI, mostly NLP. I'm extremely into the **planning and reasoning capabilities** of LLMs, building **world models**, and explaining their **intelligence**. Outside of those, I'm drawn to games, music, books, sports -- yeah, like every other man.
 
-_between bonfires_ is where I can write without squeezing every thought into a social feed or a product dashboard. As I've explained in [the first post]({{ starting-fresh' | relative_url }}), I created this website (actually re-created -- this was once my portfolio) to give me a getaway from constant knowlegede consumption, to allow me to appreciate the boredom that I might have, and to think on my own.
+_between bonfires_ is where I can write without squeezing every thought into a social feed or a product dashboard. As I've explained in [the first post]({{ '/starting-fresh' | relative_url }}), I created this website (actually re-created -- this was once my portfolio) to give me a getaway from constant knowlegede consumption, to allow me to appreciate the boredom that I might have, and to think on my own.
 
 so, although the website is **100% vibe coded**, I made a promise to myself that everything I write here is my own words. They might (and very likely) be very subjective, usually incoherent, often badly written, and sometimes even completely wrong. Please feel free to contact me to discuss anything of your interest.
 
