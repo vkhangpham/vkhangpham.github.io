@@ -1,36 +1,43 @@
 ---
 layout: default
 ---
-<section class="hero">
-  <p class="eyebrow">Personal blog</p>
-  <h1>{{ site.title }}</h1>
-  <p class="hero-copy">{{ page.intro | default: site.description }}</p>
+<section class="hero page-panel home-hero">
+  <div class="page-body home-hero-body">
+    <p class="eyebrow">personal blog</p>
+    <h1>{{ site.title }}</h1>
+    <p class="hero-copy">{{ page.intro | default: site.description }}</p>
+  </div>
 </section>
 
 {% if content != "" %}
-<section class="panel">
-  <div class="prose">
-    {{ content }}
+<section class="panel page-panel">
+  <div class="page-body">
+    <div class="prose">
+      {{ content }}
+    </div>
   </div>
 </section>
 {% endif %}
 
-<section class="panel">
+<section class="panel page-panel">
   <div class="section-heading">
-    <h2>Latest writing</h2>
-    <a href="{{ '/archive/' | relative_url }}">See all posts</a>
+    <h2>latest writing</h2>
+    <a class="section-link" href="{{ '/archive/' | relative_url }}">
+      <span>archive</span>
+      <svg class="utility-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M5 12h14"></path>
+        <path d="M13 6l6 6"></path>
+        <path d="M13 18l6 -6"></path>
+      </svg>
+    </a>
   </div>
 
-  <div class="post-list">
-    {% for post in site.posts %}
-      <article class="post-card">
-        <p class="meta">{{ post.date | date: "%B %-d, %Y" }}</p>
-        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-        {% if post.tags and post.tags.size > 0 %}
-          <p class="tags">{{ post.tags | join: " · " }}</p>
-        {% endif %}
-        <p>{{ post.excerpt | strip_html | strip_newlines }}</p>
-      </article>
-    {% endfor %}
+  <div class="page-body">
+    <div class="post-list">
+      {% for post in site.posts %}
+        {% include post-card.html post=post show_excerpt=true %}
+      {% endfor %}
+    </div>
   </div>
 </section>

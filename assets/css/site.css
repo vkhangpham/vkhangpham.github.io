@@ -113,6 +113,7 @@ pre code {
   font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: 0.01em;
+  text-transform: lowercase;
 }
 
 .brand-icon {
@@ -133,6 +134,7 @@ pre code {
   padding: 0.42rem 0.72rem;
   border-radius: 999px;
   color: var(--muted);
+  text-transform: lowercase;
   transition: background-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
 }
 
@@ -164,18 +166,28 @@ pre code {
   padding: 3.2rem clamp(1.25rem, 4vw, 3rem);
 }
 
+.home-hero {
+  padding: clamp(0.95rem, 2vw, 1.15rem);
+}
+
+.home-hero-body {
+  padding: clamp(1.5rem, 4vw, 2.4rem);
+}
+
 .eyebrow,
 .meta,
-.tags {
+.tags,
+.page-count {
   color: var(--muted);
 }
 
 .eyebrow,
 .meta,
-.tags {
+.tags,
+.page-count {
   font-size: 0.9rem;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
 }
 
 .hero h1,
@@ -190,7 +202,7 @@ pre code {
 
 .hero h1 {
   margin: 0.2rem 0 0.8rem;
-  font-size: clamp(2.6rem, 6vw, 5rem);
+  font-size: clamp(2.3rem, 5vw, 4rem);
   max-width: 12ch;
 }
 
@@ -253,13 +265,21 @@ pre code {
   justify-content: space-between;
   align-items: baseline;
   gap: 1rem;
+  padding-bottom: 1rem;
   margin-bottom: 1.3rem;
+  border-bottom: 1px solid var(--line);
 }
 
 .section-heading h2,
-.post-header h1 {
+.post-header h1,
+.page-header h1 {
   margin: 0;
   font-size: clamp(1.6rem, 4vw, 2.5rem);
+}
+
+.section-heading h2,
+.page-header h1 {
+  text-transform: lowercase;
 }
 
 .post-list {
@@ -288,7 +308,8 @@ pre code {
 }
 
 .post-card h3 a,
-.back-link {
+.back-link,
+.section-link {
   text-decoration: none;
 }
 
@@ -303,13 +324,143 @@ pre code {
   margin-right: auto;
 }
 
+.page-panel {
+  width: 100%;
+  max-width: none;
+}
+
+.eyebrow,
+.post-card .meta,
+.page-count,
+.back-link,
+.section-link,
+.post-date,
+.post-taxonomy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  min-height: 2.4rem;
+  padding: 0.45rem 0.78rem;
+  border: 1px solid rgba(31, 26, 23, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 250, 241, 0.82);
+  color: var(--muted);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+}
+
+.back-link {
+  margin-bottom: 1.2rem;
+}
+
+.eyebrow,
+.post-card .meta,
+.page-count {
+  margin: 0;
+}
+
+.section-link {
+  justify-content: center;
+}
+
+.back-link:hover,
+.section-link:hover,
+.post-date:hover,
+.post-taxonomy:hover {
+  color: var(--ink);
+  border-color: rgba(158, 79, 45, 0.24);
+  background: rgba(158, 79, 45, 0.08);
+}
+
+.utility-icon {
+  display: block;
+  width: 0.95rem;
+  height: 0.95rem;
+  min-width: 0.95rem;
+  min-height: 0.95rem;
+  flex-shrink: 0;
+}
+
+.post-meta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+}
+
+.page-header {
+  padding-bottom: 1rem;
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.page-body {
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  border: 1px solid rgba(31, 26, 23, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.post-date,
+.post-taxonomy,
+.post-tags {
+  margin: 0;
+}
+
+.post-taxonomy {
+  max-width: 100%;
+}
+
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.6rem 0 0;
+}
+
+.tags span,
+.post-tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.35rem;
+  padding: 0.1rem 0.48rem;
+  border-radius: 999px;
+  background: rgba(31, 26, 23, 0.06);
+  color: var(--ink);
+  letter-spacing: 0.04em;
+}
+
 .post-header {
   padding-bottom: 1rem;
   margin-bottom: 1.2rem;
   border-bottom: 1px solid var(--line);
 }
 
+.page-post .post-page {
+  padding: clamp(1.25rem, 3vw, 2.2rem);
+}
+
+.page-post .post-header h1 {
+  max-width: 12ch;
+  font-size: clamp(2rem, 6vw, 3.6rem);
+}
+
 .prose {
+  max-width: none;
+}
+
+.page-post .prose {
   max-width: var(--content-width);
 }
 
@@ -355,5 +506,9 @@ pre code {
   .section-heading {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .post-taxonomy {
+    width: 100%;
   }
 }

@@ -2,13 +2,43 @@
 layout: default
 ---
 <article class="panel post-page">
-  <p><a class="back-link" href="{{ '/' | relative_url }}">Back to home</a></p>
+  <a class="back-link" href="{{ '/' | relative_url }}" aria-label="home">
+    <svg class="utility-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M5 12h14"></path>
+      <path d="M5 12l6 6"></path>
+      <path d="M5 12l6 -6"></path>
+    </svg>
+    <span>home</span>
+  </a>
   <header class="post-header">
-    <p class="meta">{{ page.date | date: "%B %-d, %Y" }}</p>
+    <div class="post-meta-bar">
+      <p class="post-date">
+        <svg class="utility-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
+          <path d="M8 3v4"></path>
+          <path d="M16 3v4"></path>
+          <path d="M4 11h16"></path>
+        </svg>
+        <span>{{ page.date | date: "%Y.%m.%d" }}</span>
+      </p>
+      {% if page.tags and page.tags.size > 0 %}
+        <div class="post-taxonomy">
+          <svg class="utility-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M8 7h.01"></path>
+            <path d="M11 3l7 7l-8 8l-7 -7v-8z"></path>
+          </svg>
+          <p class="post-tags">
+            {% for tag in page.tags %}
+              <span class="post-tag">{{ tag | downcase }}</span>
+            {% endfor %}
+          </p>
+        </div>
+      {% endif %}
+    </div>
     <h1>{{ page.title }}</h1>
-    {% if page.tags and page.tags.size > 0 %}
-      <p class="tags">{{ page.tags | join: " · " }}</p>
-    {% endif %}
   </header>
 
   <div class="prose">

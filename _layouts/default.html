@@ -17,7 +17,7 @@
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
   </head>
-  <body>
+  <body{% if page.date %} class="page-post"{% endif %}>
     {% assign current_url = page.url | replace: 'index.html', '' %}
     {% assign archive_active = false %}
     {% if current_url == '/archive/' or page.date %}
@@ -38,11 +38,11 @@
           </a>
           {% include social-links.html %}
         </div>
-        <nav class="site-nav" aria-label="Primary">
-          <a href="{{ '/' | relative_url }}"{% if current_url == '/' %} class="is-current" aria-current="page"{% endif %}>Home</a>
-          <a href="{{ '/about/' | relative_url }}"{% if current_url == '/about/' %} class="is-current" aria-current="page"{% endif %}>About</a>
-          <a href="{{ '/archive/' | relative_url }}"{% if archive_active %} class="is-current" aria-current="page"{% endif %}>Archive</a>
-          <a href="{{ '/feed.xml' | relative_url }}"{% if current_url == '/feed.xml' %} class="is-current" aria-current="page"{% endif %}>RSS</a>
+        <nav class="site-nav" aria-label="primary">
+          <a href="{{ '/' | relative_url }}"{% if current_url == '/' %} class="is-current" aria-current="page"{% endif %}>home</a>
+          <a href="{{ '/about/' | relative_url }}"{% if current_url == '/about/' %} class="is-current" aria-current="page"{% endif %}>about</a>
+          <a href="{{ '/archive/' | relative_url }}"{% if archive_active %} class="is-current" aria-current="page"{% endif %}>archive</a>
+          <a href="{{ '/feed.xml' | relative_url }}"{% if current_url == '/feed.xml' %} class="is-current" aria-current="page"{% endif %}>rss</a>
         </nav>
       </header>
 

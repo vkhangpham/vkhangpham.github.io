@@ -1,7 +1,8 @@
 ---
-title: About
+layout: page
+title: about
 permalink: /about/
-description: A short note about Khang Pham and a bonfire.
+description: a short note about khang pham and a bonfire.
 ---
 I am Khang Vinh Pham, usually Kyle to friends and collaborators.
 
@@ -14,4 +15,4 @@ You should expect a mix of:
 - research thoughts
 - essays that are mostly me trying to understand my own thinking
 
-If you want the simplest possible version of the site, start on the [home page]({{ '/' | relative_url }}) or subscribe through the [RSS feed]({{ '/feed.xml' | relative_url }}).
+If you want the simplest possible version of the site, start on the [home page]({{ '/' | relative_url }}) or subscribe through the [rss feed]({{ '/feed.xml' | relative_url }}).
