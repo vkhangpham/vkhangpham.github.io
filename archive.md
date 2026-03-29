@@ -13,7 +13,7 @@ description: all posts from a bonfire.
   <div class="page-body">
     <div class="post-list">
       {% for post in site.posts %}
-        {% include post-card.html post=post %}
+        {% include post-card.html post=post show_excerpt=true %}
       {% endfor %}
     </div>
   </div>
