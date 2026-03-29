@@ -5,11 +5,11 @@ permalink: /about/
 description: a short note about khang pham and between bonfires.
 ---
 
-I am Khang, or usually Kyle to friends and anyone who cannot pronounce the /x/ sound in Vietnamese.
+I am **Khang**, or usually **Kyle** to friends and anyone who cannot pronounce the weird _voiceless velar fricative /x/_ sound in Vietnamese.
 
 I work in AI and spend a lot of time thinking about language, intelligence, structure, and abstraction. But I'm just as interested in the things around them: music, fiction, games, memory, solitude, obsession, and the scattered fragments that shape a life.
 
-between bonfires is where I can write without squeezing every thought into a social feed or a product dashboard.
+_between bonfires_ is where I can write without squeezing every thought into a social feed or a product dashboard.
 
 You should expect a mix of:
 
