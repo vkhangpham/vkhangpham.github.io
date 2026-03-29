@@ -1,4 +1,4 @@
-# a bonfire
+# between bonfires
 
 This repo is now a minimal Jekyll blog for GitHub Pages.
 

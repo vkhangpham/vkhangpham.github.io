@@ -1,7 +1,7 @@
 ---
 title: archive
 permalink: /archive/
-description: all posts from a bonfire.
+description: all posts from between bonfires.
 post_filters: true
 ---
 <div class="panel page-panel">

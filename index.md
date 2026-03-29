@@ -1,10 +1,11 @@
 ---
 layout: home
-title: a bonfire
-intro: Notes from the quieter stretches between one thing and the next.
+title: between bonfires
+intro: There are thoughts that arrive at the finish line, and thoughts that only exist on the road.
 ---
-This used to be a portfolio. Now it is a quieter place to think in public.
 
-I wanted something faster than a dashboard and lighter than a full publishing platform, so this site runs straight from Markdown files in the repo.
+between bonfires is for the second kind.
 
-Mostly, it is where I keep notes, questions, and fragments that feel worth returning to.
+I work in AI and spend a lot of time thinking about language, intelligence, structure, and abstraction. But I'm just as interested in the things around them: music, fiction, games, memory, solitude, obsession, and the scattered fragments that shape a life.
+
+this blog is where I leave traces between one fire and the next.

@@ -14,7 +14,7 @@ and I think a big part of that comes from constant consuming of social media con
 
 another cause is the excessive usage of AIs. I've been absolutely abusing AIs for all sort of tasks, from personal to professionals, from a piece of cake to an impossible mission. They are so good and efficient (?), but they also take away from me the ability to be on my own.
 
-so, in a slow moment where I was staring at my terminal waiting for Codex to finish my code, I decided that things need to change. I want to be able to think independently (again), to form ideas and opinions again, instead of just grasping anything that reach me via an algorithm.
+so, in a slow moment where I was staring at my terminal waiting for Codex to finish my code, I decided that things need to change. I want to be able to think independently (again), to form ideas and opinions (again), instead of just grasping anything that reach me via an algorithm.
 
 and _I think_, what is better than writing a blog? A blog for myself, a blog that was born out of my boredom, where my thoughts can sit and rest. There will be no filter, no algorithm, no AI. Just **opinionated** takes.
 
