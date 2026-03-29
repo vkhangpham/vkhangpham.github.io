@@ -15,6 +15,82 @@ document.addEventListener("DOMContentLoaded", () => {
   const cards = Array.from(postList.querySelectorAll("[data-post-card]"));
   const summary = document.querySelector("[data-filter-summary]");
   const emptyState = document.querySelector("[data-post-empty]");
+  const trackedParams = ["query", "from", "to", "tag"];
+
+  const getFilterState = () => {
+    const formData = new FormData(form);
+
+    return {
+      query: (formData.get("query") || "").toString().trim().toLowerCase(),
+      selectedTags: formData
+        .getAll("tag")
+        .map((value) => value.toString().trim().toLowerCase())
+        .filter(Boolean),
+      from: (formData.get("from") || "").toString(),
+      to: (formData.get("to") || "").toString(),
+    };
+  };
+
+  const hydrateFiltersFromUrl = () => {
+    const params = new URLSearchParams(window.location.search);
+    const queryInput = form.querySelector("[name='query']");
+    const fromInput = form.querySelector("[name='from']");
+    const toInput = form.querySelector("[name='to']");
+    const selectedTags = new Set(
+      params
+        .getAll("tag")
+        .map((value) => value.toString().trim().toLowerCase())
+        .filter(Boolean),
+    );
+
+    if (queryInput) {
+      queryInput.value = (params.get("query") || "").toString();
+    }
+
+    if (fromInput) {
+      fromInput.value = (params.get("from") || "").toString();
+    }
+
+    if (toInput) {
+      toInput.value = (params.get("to") || "").toString();
+    }
+
+    form.querySelectorAll("[name='tag']").forEach((input) => {
+      input.checked = selectedTags.has(input.value.toLowerCase());
+    });
+  };
+
+  const syncUrlWithFilters = ({ query, selectedTags, from, to }) => {
+    const params = new URLSearchParams(window.location.search);
+
+    trackedParams.forEach((name) => {
+      params.delete(name);
+    });
+
+    if (query) {
+      params.set("query", query);
+    }
+
+    if (from) {
+      params.set("from", from);
+    }
+
+    if (to) {
+      params.set("to", to);
+    }
+
+    selectedTags.forEach((tag) => {
+      params.append("tag", tag);
+    });
+
+    const nextSearch = params.toString();
+    const nextUrl = `${window.location.pathname}${nextSearch ? `?${nextSearch}` : ""}${window.location.hash}`;
+    const currentUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+
+    if (nextUrl !== currentUrl) {
+      window.history.replaceState(null, "", nextUrl);
+    }
+  };
 
   const updateSummary = (visibleCount) => {
     if (!summary) {
@@ -25,14 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const applyFilters = () => {
-    const formData = new FormData(form);
-    const query = (formData.get("query") || "").toString().trim().toLowerCase();
-    const selectedTags = formData
-      .getAll("tag")
-      .map((value) => value.toString().trim().toLowerCase())
-      .filter(Boolean);
-    const from = (formData.get("from") || "").toString();
-    const to = (formData.get("to") || "").toString();
+    const { query, selectedTags, from, to } = getFilterState();
 
     let visibleCount = 0;
 
@@ -59,8 +128,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     updateSummary(visibleCount);
+    syncUrlWithFilters({ query, selectedTags, from, to });
   };
 
+  hydrateFiltersFromUrl();
   form.addEventListener("input", applyFilters);
   form.addEventListener("change", applyFilters);
   form.addEventListener("reset", () => {

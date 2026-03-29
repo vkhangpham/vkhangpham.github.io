@@ -24,6 +24,7 @@ layout: default
         <span>{{ page.date | date: "%Y.%m.%d" }}</span>
       </p>
       {% if page.tags and page.tags.size > 0 %}
+        {% assign archive_url = '/archive/' | relative_url %}
         <div class="post-taxonomy">
           <svg class="utility-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -32,7 +33,11 @@ layout: default
           </svg>
           <p class="post-tags">
             {% for tag in page.tags %}
-              <span class="post-tag">{{ tag | downcase }}</span>
+              <a
+                class="post-tag post-tag-link"
+                href="{{ archive_url }}?tag={{ tag | downcase | url_encode }}"
+                aria-label="View posts tagged {{ tag | downcase }}"
+              >{{ tag | downcase }}</a>
             {% endfor %}
           </p>
         </div>

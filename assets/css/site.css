@@ -669,6 +669,22 @@ pre code {
   letter-spacing: 0.04em;
 }
 
+.post-tag-link {
+  color: inherit;
+  text-decoration: none;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.post-tag-link:hover {
+  color: var(--ink);
+  background: rgba(158, 79, 45, 0.14);
+}
+
+.post-tag-link:focus-visible {
+  outline: 2px solid rgba(158, 79, 45, 0.45);
+  outline-offset: 2px;
+}
+
 .post-header {
   padding-bottom: 1rem;
   margin-bottom: 1.2rem;
