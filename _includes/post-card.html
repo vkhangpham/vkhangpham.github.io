@@ -1,14 +1,22 @@
-<article class="post-card">
-  <p class="meta">{{ include.post.date | date: "%Y.%m.%d" }}</p>
-  <h3><a href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a></h3>
-  {% if include.post.tags and include.post.tags.size > 0 %}
-    <p class="tags">
-      {% for tag in include.post.tags %}
-        <span>{{ tag | downcase }}</span>
-      {% endfor %}
-    </p>
-  {% endif %}
-  {% if include.show_excerpt %}
-    <p>{{ include.post.excerpt | strip_html | strip_newlines }}</p>
-  {% endif %}
+<article
+  class="post-card"
+  data-post-card
+  data-title="{{ include.post.title | downcase | escape }}"
+  data-tags="{% if include.post.tags and include.post.tags.size > 0 %}{{ include.post.tags | join: '|' | downcase | escape }}{% endif %}"
+  data-date="{{ include.post.date | date: '%Y-%m-%d' }}"
+>
+  <a class="post-card-link" href="{{ include.post.url | relative_url }}" aria-label="Read {{ include.post.title | escape }}">
+    <p class="meta">{{ include.post.date | date: "%Y.%m.%d" }}</p>
+    <h3>{{ include.post.title }}</h3>
+    {% if include.post.tags and include.post.tags.size > 0 %}
+      <p class="tags">
+        {% for tag in include.post.tags %}
+          <span>{{ tag | downcase }}</span>
+        {% endfor %}
+      </p>
+    {% endif %}
+    {% if include.show_excerpt %}
+      <p>{{ include.post.excerpt | strip_html | strip_newlines }}</p>
+    {% endif %}
+  </a>
 </article>
