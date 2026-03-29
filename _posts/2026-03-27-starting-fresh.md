@@ -10,7 +10,7 @@ over the years, the frequency that I use the phrase _"I think"_ has decreased, s
 
 what I mean is that I usually find myself lacking the ideas to form, the words to say, and even the opinions to make.
 
-and I think a big part of that comes from constant consuming of social media content. I've just found out that my average screen time on my phone is **more than 10h** a day, and most of those spent hours are doom-scrolling through SNS (Facebook, Instagram, X), and watching YouTube videos.
+a big part of that comes from constant consuming of social media content. I've just found out that my average screen time on my phone is **more than 10h** a day, and most of those spent hours are doom-scrolling through SNS (Facebook, Instagram, X), and watching YouTube videos.
 
 another cause is the excessive usage of AIs. I've been absolutely abusing AIs for all sort of tasks, from personal to professionals, from a piece of cake to an impossible mission. They are so good and efficient (?), but they also take away from me the ability to be on my own.
 
