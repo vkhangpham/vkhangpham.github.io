@@ -14,6 +14,6 @@ I am heavily influenced by Souls games, especially **Elden Ring**. The revolutio
 
 so basically, the blog's name, _between bonfires_, is a poetic way of saying I am **side-questing** to strengthen up before milestones of my life.
 
-There might not be many important milestones at all, or there might be no reflection point before a big milestone, but that just how life works I guess. So I am very happy right now to have the time and enjoyment to write this blog.
+there might not be many important milestones at all, or there might be no reflection point before a big milestone, but that just how life works I guess. So I am very happy right now to have the time and enjoyment to write this blog.
 
 after all, it takes FromSoft so many years to realize they should put a bonfire before _every_ boss fights, so yeah, good luck to me.
