@@ -1,7 +1,7 @@
 ---
 layout: home
 title: between bonfires
-intro: there are thoughts that arrive at the finish line, and thoughts that only exist on the road.
+intro: there are thoughts that arrive at the finish line, and thoughts that only exist on the road
 ---
 
 _between bonfires_ is for the second kind.
