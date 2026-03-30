@@ -1,25 +1,42 @@
 # between bonfires
 
-This repo is now a minimal Jekyll blog for GitHub Pages.
+A minimal Jekyll blog for GitHub Pages.
 
-## Local setup
+- Site: <https://vkhangpham.github.io>
+- Permalinks: `/:title/`
+- Post excerpts: `<!--more-->`
 
-1. Run `./bin/setup`
-2. Run `./bin/check`
-3. Run `./bin/serve`
-4. Open `http://127.0.0.1:4000`
+## Local workflow
 
-## Publishing flow
+1. Run `./bin/setup` to install gems into `vendor/bundle`.
+2. Run `./bin/check` to verify the site with `jekyll doctor` and a full build.
+3. If the preview is already running in the `servers` tmux session, reuse it instead of starting a duplicate server.
+4. Otherwise run `./bin/serve` and open <http://127.0.0.1:4000>.
 
-1. Run `./bin/new-post` for an interactive template, or create a new Markdown file in `_posts/` manually.
-2. Name it `YYYY-MM-DD-title.md`.
-3. Add front matter like this:
+`./bin/serve` starts Jekyll with `--livereload --drafts`, so local preview includes draft content and refreshes automatically.
+
+## Ruby environment
+
+Always prefer the repo scripts over direct `bundle exec jekyll ...` commands. The scripts source `bin/_ruby_env`, which prefers Homebrew Ruby automatically; the macOS system Ruby is too old for this Jekyll/Bundler setup.
+
+## Writing posts
+
+Use `./bin/new-post` for an interactive post template, or create the file manually in `_posts/`.
+
+- Filename format: `YYYY-MM-DD-title.md`
+- Required front matter: `title`
+- Helpful optional front matter: `tags`, `description`, `published: false`
+- Post layout: applied automatically by `_config.yml`
+
+Example:
 
 ```md
 ---
-title: Your post title
-tags: [writing, notes]
+title: "Your post title"
+tags: ["writing", "notes"]
+description: "One-line summary for feeds or sharing."
 ---
+
 Opening paragraph here.
 
 <!--more-->
@@ -27,20 +44,14 @@ Opening paragraph here.
 Rest of the post here.
 ```
 
-4. Commit and push to `main`.
-5. GitHub Pages publishes it automatically.
+Commit and push to `main` when you are ready to publish. GitHub Pages deploys the site automatically from there.
 
-## Good places to edit
+## Key files
 
-- `_config.yml` for site title, description, and base settings
-- `about.md` for your bio
+- `_config.yml` for site title, description, permalink, and defaults
 - `index.md` for the home-page intro
-- `assets/css/site.css` for the visual style
-
-## Drafts
-
-Add `published: false` to a post's front matter if you want to keep it in the repo without publishing it yet.
-
-## Local preview
-
-The repo now includes a reproducible Bundler setup and prefers Homebrew Ruby automatically, so local preview should just work through `./bin/setup`, `./bin/check`, and `./bin/serve`.
+- `about.md` for the bio/about page
+- `archive.md` for the archive page
+- `_posts/*.md` for posts
+- `_layouts/*.html` and `_includes/*.html` for shared structure
+- `assets/css/site.css` for visual styling

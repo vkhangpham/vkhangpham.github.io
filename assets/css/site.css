@@ -101,6 +101,7 @@ pre code {
 .brand-lockup {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.75rem;
   min-width: 0;
 }
@@ -121,6 +122,18 @@ pre code {
   width: 1.75rem;
   height: 1.75rem;
   min-width: 1.75rem;
+}
+
+.brand-byline {
+  color: rgba(104, 91, 82, 0.74);
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 0.76rem;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  margin-top: 0.14rem;
+  white-space: nowrap;
 }
 
 .site-nav {
@@ -199,26 +212,35 @@ pre code {
 .home-hero-intro {
   display: flex;
   align-items: stretch;
+  gap: clamp(0.85rem, 2vw, 1.15rem);
+  min-width: 0;
+}
+
+.home-hero-intro::before {
+  content: "";
+  width: 1px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(158, 79, 45, 0.08), rgba(158, 79, 45, 0.32), rgba(158, 79, 45, 0.08));
 }
 
 .home-hero-intro-copy {
   width: 100%;
-  padding: clamp(1.15rem, 2.8vw, 1.7rem);
-  border: 1px solid rgba(31, 26, 23, 0.1);
-  border-radius: calc(var(--radius) - 2px);
-  background:
-    linear-gradient(180deg, rgba(255, 250, 241, 0.9), rgba(246, 238, 224, 0.78));
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+  padding: clamp(0.35rem, 1vw, 0.6rem) 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .home-hero-intro-copy.prose {
   max-width: none;
-  color: var(--muted);
-  font-size: 1rem;
+  color: rgba(104, 91, 82, 0.9);
+  font-size: 0.95rem;
+  line-height: 1.8;
 }
 
 .home-hero-intro-copy.prose > * + * {
-  margin-top: 1rem;
+  margin-top: 0.95rem;
 }
 
 .eyebrow,
@@ -792,6 +814,17 @@ pre code {
 
   .home-hero-main {
     padding-block: 0;
+  }
+
+  .home-hero-intro {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .home-hero-intro::before {
+    width: 3.5rem;
+    height: 1px;
   }
 }
 

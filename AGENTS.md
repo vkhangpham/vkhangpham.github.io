@@ -16,6 +16,10 @@
 - Do not introduce markdown TODO lists, alternate trackers, or stray planning files in the repo root unless the user asks for them.
 - If you need to keep temporary planning or design notes, put them in `history/` instead of the project root.
 
+## Documentation
+
+- When repo scripts, preview behavior, permalink rules, or post-writing conventions change, update `README.md` and any related repo guidance in the same task so human-facing docs stay aligned with the live workflow.
+
 ## Local Workflow
 
 ### Jekyll Commands

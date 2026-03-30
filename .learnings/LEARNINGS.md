@@ -192,3 +192,35 @@ When working on this site, treat blog posts, page prose, and other written copy 
 - **Resolved**: 2026-03-30T08:06:52Z
 - **Commit/PR**: uncommitted
 - **Notes**: Promoted the copy-preservation rule into `AGENTS.md` and implemented the home-page layout update without changing any written content.
+
+## [LRN-20260330-002] best_practice
+
+**Logged**: 2026-03-30T22:32:01+0700
+**Priority**: medium
+**Status**: promoted
+**Promoted**: AGENTS.md
+**Area**: docs
+
+### Summary
+Keep `README.md` and repo agent guidance in sync whenever the actual Jekyll workflow changes.
+
+### Details
+The repo already had correct workflow details spread across scripts, `AGENTS.md`, and earlier learning notes, but the human-facing `README.md` had drifted into a thinner version of the setup. That made it easy for the documented flow to omit important behavior such as the Homebrew Ruby bootstrap, the existing tmux preview workflow, the real permalink shape, and the current post-authoring helpers.
+
+### Suggested Action
+When scripts, preview behavior, permalink rules, or writing conventions change, update `README.md` and the related agent docs together in the same task instead of letting one source of truth lag behind.
+
+### Metadata
+- Source: conversation
+- Related Files: README.md, AGENTS.md, _config.yml, bin/setup, bin/check, bin/serve, bin/new-post
+- Tags: docs, readme, workflow, jekyll, maintenance
+- See Also: LRN-20260327-001, LRN-20260328-001
+- Pattern-Key: docs.sync-human-and-agent-guides
+- Recurrence-Count: 1
+- First-Seen: 2026-03-30
+- Last-Seen: 2026-03-30
+
+### Resolution
+- **Resolved**: 2026-03-30T22:32:01+0700
+- **Commit/PR**: uncommitted
+- **Notes**: Refreshed `README.md` to match the live repo workflow and promoted the prevention rule into `AGENTS.md`.
