@@ -1,0 +1,176 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+repo_root="$(cd "$script_dir/.." && pwd)"
+posts_dir="$repo_root/_posts"
+today="$(date +%F)"
+
+if [ ! -d "$posts_dir" ]; then
+  echo "Missing posts directory: $posts_dir" >&2
+  exit 1
+fi
+
+prompt_required() {
+  local label="$1"
+  local value=""
+
+  while true; do
+    printf "%s: " "$label" >&2
+    IFS= read -r value || exit 1
+    if [ -n "$value" ]; then
+      printf "%s" "$value"
+      return 0
+    fi
+    echo "This field is required." >&2
+  done
+}
+
+prompt_optional() {
+  local label="$1"
+  local default_value="${2-}"
+  local value=""
+
+  if [ -n "$default_value" ]; then
+    printf "%s [%s]: " "$label" "$default_value" >&2
+  else
+    printf "%s: " "$label" >&2
+  fi
+
+  IFS= read -r value || exit 1
+  if [ -n "$value" ]; then
+    printf "%s" "$value"
+  else
+    printf "%s" "$default_value"
+  fi
+}
+
+prompt_yes_no() {
+  local label="$1"
+  local value=""
+
+  while true; do
+    printf "%s [Y/n]: " "$label" >&2
+    IFS= read -r value || exit 1
+    case "${value,,}" in
+      "" | y | yes)
+        return 0
+        ;;
+      n | no)
+        return 1
+        ;;
+      *)
+        echo "Please answer y or n." >&2
+        ;;
+    esac
+  done
+}
+
+prompt_date() {
+  local default_value="$1"
+  local value=""
+
+  while true; do
+    value="$(prompt_optional "date" "$default_value")"
+    if [[ "$value" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
+      printf "%s" "$value"
+      return 0
+    fi
+    echo "Please use YYYY-MM-DD." >&2
+  done
+}
+
+slugify() {
+  printf "%s" "$1" \
+    | tr '[:upper:]' '[:lower:]' \
+    | sed -E 's/[^a-z0-9]+/-/g; s/^-+|-+$//g'
+}
+
+yaml_quote() {
+  local value="$1"
+  value="${value//\\/\\\\}"
+  value="${value//\"/\\\"}"
+  printf '"%s"' "$value"
+}
+
+build_tags_yaml() {
+  local raw="$1"
+  local item=""
+  local trimmed=""
+  local output=""
+  local first=true
+
+  if [ -z "$raw" ]; then
+    printf "[]"
+    return 0
+  fi
+
+  IFS=',' read -r -a tags <<< "$raw"
+  for item in "${tags[@]}"; do
+    trimmed="$(printf "%s" "$item" | sed -E 's/^[[:space:]]+//; s/[[:space:]]+$//')"
+    if [ -z "$trimmed" ]; then
+      continue
+    fi
+    if [ "$first" = true ]; then
+      output="["
+      first=false
+    else
+      output+=", "
+    fi
+    output+="$(yaml_quote "$trimmed")"
+  done
+
+  if [ "$first" = true ]; then
+    printf "[]"
+  else
+    output+="]"
+    printf "%s" "$output"
+  fi
+}
+
+title="$(prompt_required "title")"
+tags_raw="$(prompt_optional "tags (comma-separated, optional)")"
+description="$(prompt_optional "desc (optional)")"
+excerpt="$(prompt_optional "excerpt (optional)")"
+post_date="$(prompt_date "$today")"
+edit_now=false
+
+if prompt_yes_no "edit now"; then
+  edit_now=true
+fi
+
+slug="$(slugify "$title")"
+if [ -z "$slug" ]; then
+  echo "Could not derive a filename slug from the title." >&2
+  exit 1
+fi
+
+file_path="$posts_dir/$post_date-$slug.md"
+if [ -e "$file_path" ]; then
+  echo "Post already exists: $file_path" >&2
+  exit 1
+fi
+
+tags_yaml="$(build_tags_yaml "$tags_raw")"
+
+{
+  printf -- "---\n"
+  printf "title: %s\n" "$(yaml_quote "$title")"
+  printf "tags: %s\n" "$tags_yaml"
+  printf "description: %s\n" "$(yaml_quote "$description")"
+  printf -- "---\n\n"
+  if [ -n "$excerpt" ]; then
+    printf "%s\n\n" "$excerpt"
+  fi
+  printf "<!--more-->\n\n"
+} > "$file_path"
+
+echo "Created $file_path"
+
+if [ "$edit_now" = true ]; then
+  if ! command -v nvim >/dev/null 2>&1; then
+    echo "nvim is not installed; skipping editor launch." >&2
+    exit 1
+  fi
+  exec nvim "$file_path"
+fi

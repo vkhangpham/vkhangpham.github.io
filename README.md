@@ -11,7 +11,7 @@ This repo is now a minimal Jekyll blog for GitHub Pages.
 
 ## Publishing flow
 
-1. Create a new Markdown file in `_posts/`.
+1. Run `./bin/new-post` for an interactive template, or create a new Markdown file in `_posts/` manually.
 2. Name it `YYYY-MM-DD-title.md`.
 3. Add front matter like this:
 

@@ -16,10 +16,10 @@ so, although the website is **100% vibe coded**, I made a promise to myself that
 
 I expect a mix of:
 
-- AI and software notes, probably my summarize after a good read or experiment (tags: `AI`, `software`)
-- random research thoughts (tags: `research`)
-- rants or hot takes on music, fiction, games, sports (tags: `entertainment`)
-- essays that are mostly me trying to understand my own thinking (tags: `personal`)
+- AI and software notes, probably my summarize after a good read or experiment (tags: [`tech`]({{ '/archive/' | relative_url }}?tag=tech))
+- random research thoughts (tags: [`research`]({{ '/archive/' | relative_url }}?tag=research))
+- rants or hot takes on music, fiction, games, sports (tags: [`rng`]({{ '/archive/' | relative_url }}?tag=rng))
+- essays that are mostly me trying to understand my own thinking (tags: [`personal`]({{ '/archive/' | relative_url }}?tag=personal))
 
 if you want the simplest possible version of the site, start on the [home page]({{ '/' | relative_url }}) or subscribe through the [rss feed]({{ '/feed.xml' | relative_url }}).
 
