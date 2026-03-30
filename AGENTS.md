@@ -43,6 +43,11 @@
 - Use `tags` and `description` when helpful.
 - Use `<!--more-->` to control the archive/home excerpt.
 
+### Written Content
+
+- Never edit blog posts, page copy, or other written content already on the site unless the user explicitly asks for content changes.
+- For UI or layout tasks, preserve the existing wording and limit changes to structure, styling, and presentation unless the user asks to rewrite copy.
+
 ### Shared UI
 
 - Put repeated UI fragments in `_includes/` instead of duplicating markup across pages.

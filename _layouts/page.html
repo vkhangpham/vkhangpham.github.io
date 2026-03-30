@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<section class="panel page-panel">
+<section class="panel page-panel{% if page.reading_width %} page-panel--reading{% endif %}">
   <header class="page-header">
     <h1>{{ page.title | downcase }}</h1>
   </header>

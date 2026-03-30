@@ -160,3 +160,35 @@ For future icon UI on this site, set explicit dimensions in the SVG markup, keep
 - **Resolved**: 2026-03-28T11:01:00Z
 - **Commit/PR**: uncommitted
 - **Notes**: Added `_includes/social-links.html`, switched Home and About to the shared include, and gave each SVG explicit `18x18` dimensions with a `.social-icon` class.
+
+## [LRN-20260330-001] correction
+
+**Logged**: 2026-03-30T08:06:52Z
+**Priority**: medium
+**Status**: promoted
+**Promoted**: AGENTS.md
+**Area**: frontend
+
+### Summary
+Do not rewrite site copy during design or layout tasks unless the user explicitly asks for content changes.
+
+### Details
+While reviewing and improving the blog UI, the user clarified that written content on the page should be treated as locked by default. Future design passes in this repo should adjust structure, spacing, and styling without editing the actual blog or page copy unless content work is explicitly requested.
+
+### Suggested Action
+When working on this site, treat blog posts, page prose, and other written copy as content-owned. For UI tasks, preserve the exact wording and confine changes to layout, markup structure, and styling unless the user clearly asks for copy edits.
+
+### Metadata
+- Source: user_feedback
+- Related Files: AGENTS.md, _layouts/home.html, assets/css/site.css
+- Tags: content, copy, frontend, workflow, guardrail
+- See Also: LRN-20260328-002
+- Pattern-Key: content.copy-preservation
+- Recurrence-Count: 1
+- First-Seen: 2026-03-30
+- Last-Seen: 2026-03-30
+
+### Resolution
+- **Resolved**: 2026-03-30T08:06:52Z
+- **Commit/PR**: uncommitted
+- **Notes**: Promoted the copy-preservation rule into `AGENTS.md` and implemented the home-page layout update without changing any written content.
