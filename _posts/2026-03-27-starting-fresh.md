@@ -1,6 +1,6 @@
 ---
 title: starting fresh
-tags: [meta]
+tags: [personal]
 description: a short note on thinking and writing.
 ---
 
