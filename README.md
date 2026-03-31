@@ -8,16 +8,11 @@ A minimal Jekyll blog for GitHub Pages.
 
 ## Local workflow
 
-1. Run `./bin/setup` to install gems into `vendor/bundle`.
-2. Run `./bin/check` to verify the site with `jekyll doctor` and a full build.
-3. If the preview is already running in the `servers` tmux session, reuse it instead of starting a duplicate server.
-4. Otherwise run `./bin/serve` and open <http://127.0.0.1:4000>.
+1. Run `./bin/setup` to install the project dependencies.
+2. Run `./bin/check` to verify the site builds cleanly.
+3. Run `./bin/serve` to start a local preview.
 
-`./bin/serve` starts Jekyll with `--livereload --drafts`, so local preview includes draft content and refreshes automatically.
-
-## Ruby environment
-
-Always prefer the repo scripts over direct `bundle exec jekyll ...` commands. The scripts source `bin/_ruby_env`, which prefers Homebrew Ruby automatically; the macOS system Ruby is too old for this Jekyll/Bundler setup.
+`./bin/serve` enables drafts and live reload for local writing and design work.
 
 ## Writing posts
 
