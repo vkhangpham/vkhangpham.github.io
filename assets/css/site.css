@@ -385,6 +385,13 @@ pre code {
   outline: none;
 }
 
+.post-card-meta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 0.65rem;
+}
+
 .post-card h3 {
   margin: 0.15rem 0 0.3rem;
   font-family: "Fraunces", Georgia, serif;
@@ -639,11 +646,11 @@ pre code {
 
 .eyebrow,
 .post-card .meta,
+.post-card-meta-item,
 .page-count,
 .back-link,
 .section-link,
-.post-date,
-.post-taxonomy {
+.post-meta-item {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -666,7 +673,9 @@ pre code {
 
 .eyebrow,
 .post-card .meta,
-.page-count {
+.post-card-meta-item,
+.page-count,
+.post-meta-item {
   margin: 0;
 }
 
@@ -676,8 +685,7 @@ pre code {
 
 .back-link:hover,
 .section-link:hover,
-.post-date:hover,
-.post-taxonomy:hover {
+.post-meta-item--interactive:hover {
   color: var(--ink);
   border-color: rgba(158, 79, 45, 0.24);
   background: rgba(158, 79, 45, 0.08);
@@ -710,7 +718,7 @@ pre code {
   max-width: var(--content-width);
 }
 
-.post-date,
+.post-meta-item,
 .post-taxonomy,
 .post-tags {
   margin: 0;

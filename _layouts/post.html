@@ -1,6 +1,9 @@
 ---
 layout: default
 ---
+{% assign words_per_minute = 180 %}
+{% assign word_count = page.content | markdownify | strip_html | number_of_words %}
+{% assign reading_time = word_count | plus: words_per_minute | minus: 1 | divided_by: words_per_minute | at_least: 1 %}
 <article class="panel post-page">
   <a class="back-link" href="{{ '/' | relative_url }}" aria-label="home">
     <svg class="utility-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">
@@ -13,7 +16,7 @@ layout: default
   </a>
   <header class="post-header">
     <div class="post-meta-bar">
-      <p class="post-date">
+      <p class="post-meta-item post-date">
         <svg class="utility-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">
           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
           <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
@@ -23,9 +26,31 @@ layout: default
         </svg>
         <span>{{ page.date | date: "%Y.%m.%d" }}</span>
       </p>
+      <p class="post-meta-item post-stat">
+        <svg class="utility-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M8 5h8"></path>
+          <path d="M8 9h8"></path>
+          <path d="M8 13h5"></path>
+          <path d="M5 5h.01"></path>
+          <path d="M5 9h.01"></path>
+          <path d="M5 13h.01"></path>
+          <path d="M5 17h13"></path>
+        </svg>
+        <span>{{ word_count }} words</span>
+      </p>
+      <p class="post-meta-item post-stat">
+        <svg class="utility-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M12 7v5l3 3"></path>
+          <path d="M3.05 11a9 9 0 1 1 .5 4"></path>
+          <path d="M3 4v5h5"></path>
+        </svg>
+        <span>{{ reading_time }} min read</span>
+      </p>
       {% if page.tags and page.tags.size > 0 %}
         {% assign archive_url = '/archive/' | relative_url %}
-        <div class="post-taxonomy">
+        <div class="post-meta-item post-meta-item--interactive post-taxonomy">
           <svg class="utility-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
             <path d="M8 7h.01"></path>

@@ -1,3 +1,6 @@
+{% assign words_per_minute = 180 %}
+{% assign word_count = include.post.content | markdownify | strip_html | number_of_words %}
+{% assign reading_time = word_count | plus: words_per_minute | minus: 1 | divided_by: words_per_minute | at_least: 1 %}
 <article
   class="post-card"
   data-post-card
@@ -6,7 +9,11 @@
   data-date="{{ include.post.date | date: '%Y-%m-%d' }}"
 >
   <a class="post-card-link" href="{{ include.post.url | relative_url }}" aria-label="Read {{ include.post.title | escape }}">
-    <p class="meta">{{ include.post.date | date: "%Y.%m.%d" }}</p>
+    <div class="post-card-meta-bar">
+      <p class="meta">{{ include.post.date | date: "%Y.%m.%d" }}</p>
+      <p class="post-card-meta-item">{{ word_count }} words</p>
+      <p class="post-card-meta-item">{{ reading_time }} min read</p>
+    </div>
     <h3>{{ include.post.title }}</h3>
     {% if include.post.tags and include.post.tags.size > 0 %}
       <p class="tags">
