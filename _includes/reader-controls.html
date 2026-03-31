@@ -1,0 +1,62 @@
+<details class="reader-settings" data-reader-settings hidden>
+  <summary class="reader-settings-toggle">
+    <span class="reader-settings-title">reader settings</span>
+    <span class="reader-settings-summary" data-reader-summary>18px / 1 column</span>
+  </summary>
+
+  <div class="reader-settings-body">
+    <form class="reader-settings-form" data-reader-form>
+      <div class="reader-settings-grid">
+        <label class="reader-setting" for="reader-font-size">
+          <span class="reader-setting-header">
+            <span class="reader-setting-label">font size</span>
+            <output class="reader-setting-output" for="reader-font-size" data-reader-output="fontSize">18px</output>
+          </span>
+          <input id="reader-font-size" class="reader-setting-range" type="range" name="fontSize" min="16" max="24" step="1" value="18">
+        </label>
+
+        <label class="reader-setting" for="reader-line-height">
+          <span class="reader-setting-header">
+            <span class="reader-setting-label">line spacing</span>
+            <output class="reader-setting-output" for="reader-line-height" data-reader-output="lineHeight">1.7x</output>
+          </span>
+          <input id="reader-line-height" class="reader-setting-range" type="range" name="lineHeight" min="1.5" max="2.2" step="0.05" value="1.7">
+        </label>
+
+        <label class="reader-setting" for="reader-word-spacing">
+          <span class="reader-setting-header">
+            <span class="reader-setting-label">word spacing</span>
+            <output class="reader-setting-output" for="reader-word-spacing" data-reader-output="wordSpacing">normal</output>
+          </span>
+          <input id="reader-word-spacing" class="reader-setting-range" type="range" name="wordSpacing" min="0" max="0.24" step="0.02" value="0">
+        </label>
+
+        <label class="reader-setting" for="reader-words-per-line">
+          <span class="reader-setting-header">
+            <span class="reader-setting-label">words per line</span>
+            <output class="reader-setting-output" for="reader-words-per-line" data-reader-output="wordsPerLine">~11</output>
+          </span>
+          <input id="reader-words-per-line" class="reader-setting-range" type="range" name="wordsPerLine" min="8" max="14" step="1" value="11">
+        </label>
+      </div>
+
+      <div class="reader-settings-footer">
+        <fieldset class="reader-setting reader-setting--columns">
+          <legend class="reader-setting-label">layout</legend>
+          <div class="reader-choice-group">
+            <label class="reader-choice">
+              <input type="radio" name="columns" value="1" checked>
+              <span>1 column</span>
+            </label>
+            <label class="reader-choice">
+              <input type="radio" name="columns" value="2">
+              <span>2 columns</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <button class="reader-reset" type="reset">reset</button>
+      </div>
+    </form>
+  </div>
+</details>

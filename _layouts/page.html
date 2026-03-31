@@ -2,13 +2,19 @@
 layout: default
 ---
 <section class="panel page-panel{% if page.reading_width %} page-panel--reading{% endif %}">
-  <header class="page-header">
-    <h1>{{ page.title | downcase }}</h1>
-  </header>
+  <div{% if page.reading_width %} class="reader-shell" data-reader-shell{% endif %}>
+    <header class="page-header">
+      <h1>{{ page.title | downcase }}</h1>
+    </header>
 
-  <div class="page-body">
-    <div class="prose">
-      {{ content }}
+    {% if page.reading_width %}
+      {% include reader-controls.html %}
+    {% endif %}
+
+    <div class="page-body">
+      <div class="prose{% if page.reading_width %} reader-content{% endif %}"{% if page.reading_width %} data-reader-content{% endif %}>
+        {{ content }}
+      </div>
     </div>
   </div>
 </section>

@@ -19,6 +19,9 @@
     {% if page.post_filters %}
       <script src="{{ '/assets/js/post-filters.js' | relative_url }}" defer></script>
     {% endif %}
+    {% if page.date or page.reading_width %}
+      <script src="{{ '/assets/js/reader-preferences.js' | relative_url }}" defer></script>
+    {% endif %}
   </head>
   <body{% if page.date %} class="page-post"{% endif %}>
     {% assign current_url = page.url | replace: 'index.html', '' %}
@@ -52,10 +55,10 @@
       <main class="page-shell">
         {{ content }}
       </main>
-    </div>
-  </body>
-</html>
 
       <footer class="site-footer">
         {% include social-links.html %}
       </footer>
+    </div>
+  </body>
+</html>
