@@ -40,7 +40,6 @@
             <span>{{ site.title }}</span>
           </a>
           <span class="brand-byline">by {{ site.author }}</span>
-          {% include social-links.html %}
         </div>
         <nav class="site-nav" aria-label="primary">
           <a href="{{ '/' | relative_url }}"{% if current_url == '/' %} class="is-current" aria-current="page"{% endif %}>home</a>
@@ -56,3 +55,7 @@
     </div>
   </body>
 </html>
+
+      <footer class="site-footer">
+        {% include social-links.html %}
+      </footer>

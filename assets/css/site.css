@@ -174,6 +174,14 @@ pre code {
   background: var(--paper);
   box-shadow: var(--shadow);
 }
+.site-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid rgba(31, 26, 23, 0.1);
+}
+
 
 .hero {
   padding: 3.2rem clamp(1.25rem, 4vw, 3rem);
@@ -297,6 +305,11 @@ pre code {
   height: 2.2rem;
   padding: 0;
   border: 1px solid transparent;
+.site-footer .social-links {
+  justify-content: center;
+  gap: 0.45rem;
+}
+
   border-radius: 999px;
   background: transparent;
   color: var(--muted);
