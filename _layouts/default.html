@@ -19,7 +19,13 @@
     {% if page.post_filters %}
       <script src="{{ '/assets/js/post-filters.js' | relative_url }}" defer></script>
     {% endif %}
-    {% if page.date or page.reading_width %}
+    {% assign enable_reader_preferences = false %}
+    {% if page.date %}
+      {% assign enable_reader_preferences = true %}
+    {% elsif page.reading_width and page.reader_controls != false %}
+      {% assign enable_reader_preferences = true %}
+    {% endif %}
+    {% if enable_reader_preferences %}
       <script src="{{ '/assets/js/reader-preferences.js' | relative_url }}" defer></script>
     {% endif %}
   </head>

@@ -1,6 +1,7 @@
 {% assign words_per_minute = 180 %}
 {% assign word_count = include.post.content | markdownify | strip_html | number_of_words %}
 {% assign reading_time = word_count | plus: words_per_minute | minus: 1 | divided_by: words_per_minute | at_least: 1 %}
+{% assign tags_label = include.post.tags | join: ', ' | downcase %}
 <article
   class="post-card"
   data-post-card
@@ -9,21 +10,53 @@
   data-date="{{ include.post.date | date: '%Y-%m-%d' }}"
 >
   <a class="post-card-link" href="{{ include.post.url | relative_url }}" aria-label="Read {{ include.post.title | escape }}">
-    <div class="post-card-meta-bar">
-      <p class="meta">{{ include.post.date | date: "%Y.%m.%d" }}</p>
-      <p class="post-card-meta-item">{{ word_count }} words</p>
-      <p class="post-card-meta-item">{{ reading_time }} min read</p>
+    <div class="post-card-topline">
+      <time class="post-card-date" datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: "%Y.%m.%d" }}</time>
+      <div class="post-card-stats" aria-label="Post details">
+        <p class="post-card-stat" title="{{ word_count }} words" aria-label="{{ word_count }} words">
+          <svg class="utility-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M6 5l0 14"></path>
+            <path d="M10 5l0 14"></path>
+            <path d="M14 5l0 14"></path>
+            <path d="M18 5l0 14"></path>
+            <path d="M3 17l18 -10"></path>
+          </svg>
+          <span class="post-card-stat-value">{{ word_count }} words</span>
+        </p>
+        <p class="post-card-stat" title="{{ reading_time }} minute read" aria-label="{{ reading_time }} minute read">
+          <svg class="utility-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M6.5 7h11"></path>
+            <path d="M6.5 17h11"></path>
+            <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1"></path>
+            <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1"></path>
+          </svg>
+          <span class="post-card-stat-value">{{ reading_time }} min</span>
+        </p>
+      </div>
     </div>
-    <h3>{{ include.post.title }}</h3>
+    <div class="post-card-body">
+      <h3>{{ include.post.title }}</h3>
+      {% if include.show_excerpt %}
+        <p class="post-card-excerpt">{{ include.post.excerpt | strip_html | strip_newlines }}</p>
+      {% endif %}
+    </div>
     {% if include.post.tags and include.post.tags.size > 0 %}
-      <p class="tags">
-        {% for tag in include.post.tags %}
-          <span>{{ tag | downcase }}</span>
-        {% endfor %}
-      </p>
-    {% endif %}
-    {% if include.show_excerpt %}
-      <p>{{ include.post.excerpt | strip_html | strip_newlines }}</p>
+      <div class="post-card-footer">
+        <div class="post-card-taxonomy" title="tags: {{ tags_label }}" aria-label="tags: {{ tags_label }}">
+          <svg class="utility-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M8 7h.01"></path>
+            <path d="M11 3l7 7l-8 8l-7 -7v-8z"></path>
+          </svg>
+          <p class="post-card-tags">
+            {% for tag in include.post.tags %}
+              <span class="post-card-tag">{{ tag | downcase }}</span>
+            {% endfor %}
+          </p>
+        </div>
+      </div>
     {% endif %}
   </a>
 </article>

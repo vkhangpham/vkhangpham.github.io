@@ -6,52 +6,47 @@ layout: default
 {% assign reading_time = word_count | plus: words_per_minute | minus: 1 | divided_by: words_per_minute | at_least: 1 %}
 <article class="panel post-page">
   <div class="reader-shell" data-reader-shell>
-    <a class="back-link" href="{{ '/' | relative_url }}" aria-label="home">
-      <svg class="utility-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-        <path d="M5 12h14"></path>
-        <path d="M5 12l6 6"></path>
-        <path d="M5 12l6 -6"></path>
-      </svg>
-      <span>home</span>
-    </a>
     <header class="post-header">
-      <div class="post-meta-bar">
-        <p class="post-meta-item post-date">
+      <div class="post-header-topline">
+        <a class="back-link post-back-link" href="{{ '/' | relative_url }}" aria-label="home">
           <svg class="utility-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
-            <path d="M8 3v4"></path>
-            <path d="M16 3v4"></path>
-            <path d="M4 11h16"></path>
+            <path d="M5 12h14"></path>
+            <path d="M5 12l6 6"></path>
+            <path d="M5 12l6 -6"></path>
           </svg>
-          <span>{{ page.date | date: "%Y.%m.%d" }}</span>
+          <span>home</span>
+        </a>
+        <time class="post-date-line" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y.%m.%d" }}</time>
+      </div>
+      <div class="post-title-block">
+        <h1>{{ page.title }}</h1>
+      </div>
+      <div class="post-meta-bar" aria-label="Post details">
+        <p class="post-meta-item post-stat" title="{{ word_count }} words" aria-label="{{ word_count }} words">
+          <svg class="utility-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M6 5l0 14"></path>
+            <path d="M10 5l0 14"></path>
+            <path d="M14 5l0 14"></path>
+            <path d="M18 5l0 14"></path>
+            <path d="M3 17l18 -10"></path>
+          </svg>
+          <span class="post-meta-value">{{ word_count }} words</span>
         </p>
-        <p class="post-meta-item post-stat">
+        <p class="post-meta-item post-stat" title="{{ reading_time }} minute read" aria-label="{{ reading_time }} minute read">
           <svg class="utility-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path d="M8 5h8"></path>
-            <path d="M8 9h8"></path>
-            <path d="M8 13h5"></path>
-            <path d="M5 5h.01"></path>
-            <path d="M5 9h.01"></path>
-            <path d="M5 13h.01"></path>
-            <path d="M5 17h13"></path>
+            <path d="M6.5 7h11"></path>
+            <path d="M6.5 17h11"></path>
+            <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1"></path>
+            <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1"></path>
           </svg>
-          <span>{{ word_count }} words</span>
-        </p>
-        <p class="post-meta-item post-stat">
-          <svg class="utility-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path d="M12 7v5l3 3"></path>
-            <path d="M3.05 11a9 9 0 1 1 .5 4"></path>
-            <path d="M3 4v5h5"></path>
-          </svg>
-          <span>{{ reading_time }} min read</span>
+          <span class="post-meta-value">{{ reading_time }} min</span>
         </p>
         {% if page.tags and page.tags.size > 0 %}
           {% assign archive_url = '/archive/' | relative_url %}
-          <div class="post-meta-item post-meta-item--interactive post-taxonomy">
+          <div class="post-meta-item post-meta-item--interactive post-taxonomy" title="tags" aria-label="tags">
             <svg class="utility-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
               <path d="M8 7h.01"></path>
@@ -68,8 +63,22 @@ layout: default
             </p>
           </div>
         {% endif %}
+        <button
+          class="post-meta-button"
+          type="button"
+          title="Reader settings"
+          aria-label="Reader settings"
+          aria-controls="reader-settings-panel"
+          aria-expanded="false"
+          data-reader-settings-toggle
+        >
+          <svg class="utility-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.066 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.066c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.066 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c.996 .608 2.296 .07 2.572 -1.065"></path>
+            <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
+          </svg>
+        </button>
       </div>
-      <h1>{{ page.title }}</h1>
     </header>
 
     {% include reader-controls.html %}

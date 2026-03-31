@@ -4,6 +4,7 @@ title: about
 permalink: /about/
 description: a short note about khang pham and between bonfires.
 reading_width: true
+reader_controls: false
 ---
 
 hi, I'm **Khang**, or usually **Kyle** to friends and anyone who cannot pronounce the weird _voiceless velar fricative_ `/x/` sound in Vietnamese.

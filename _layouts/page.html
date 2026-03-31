@@ -7,7 +7,7 @@ layout: default
       <h1>{{ page.title | downcase }}</h1>
     </header>
 
-    {% if page.reading_width %}
+    {% if page.reading_width and page.reader_controls != false %}
       {% include reader-controls.html %}
     {% endif %}
 

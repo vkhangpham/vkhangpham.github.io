@@ -374,47 +374,152 @@ pre code {
 
 .post-list {
   display: grid;
-  gap: 1rem;
+  gap: 1.15rem;
 }
 
 .post-card {
+  position: relative;
+  overflow: clip;
   border: 1px solid var(--line);
-  border-radius: 18px;
-  background: linear-gradient(180deg, rgba(255, 250, 241, 0.92), rgba(247, 241, 229, 0.84));
-  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  border-radius: 22px;
+  background:
+    linear-gradient(135deg, rgba(158, 79, 45, 0.06), transparent 28%),
+    linear-gradient(180deg, rgba(255, 252, 247, 0.9), rgba(248, 242, 231, 0.76));
+  transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
+}
+
+.post-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(158, 79, 45, 0.02), rgba(158, 79, 45, 0.28), rgba(158, 79, 45, 0.02));
 }
 
 .post-card:hover,
 .post-card:focus-within {
-  transform: translateY(-2px);
-  border-color: rgba(158, 79, 45, 0.32);
-  box-shadow: 0 16px 36px rgba(69, 46, 30, 0.08);
+  transform: translateY(-3px);
+  border-color: rgba(158, 79, 45, 0.26);
+  box-shadow: 0 18px 36px rgba(69, 46, 30, 0.07);
 }
 
 .post-card-link {
-  display: block;
+  display: grid;
+  gap: 0.95rem;
   height: 100%;
-  padding: 1.15rem 1.2rem;
+  padding: 1.3rem 1.35rem 1.2rem;
   border-radius: inherit;
   color: inherit;
   text-decoration: none;
 }
 
 .post-card-link:focus-visible {
-  outline: none;
+  outline: 2px solid rgba(158, 79, 45, 0.4);
+  outline-offset: 3px;
 }
 
-.post-card-meta-bar {
+.post-card-topline {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.55rem;
-  margin-bottom: 0.65rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem 1rem;
 }
 
 .post-card h3 {
-  margin: 0.15rem 0 0.3rem;
+  margin: 0;
   font-family: "Fraunces", Georgia, serif;
-  font-size: 1.4rem;
+  font-size: clamp(1.6rem, 3vw, 2.15rem);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.post-card-body {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.post-card-date,
+.post-card-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  color: var(--muted);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+}
+
+.post-card-date {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.post-card-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+}
+
+.post-card-stat {
+  margin: 0;
+}
+
+.post-card-stat-value {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.post-card-body p,
+.post-card-excerpt {
+  margin: 0;
+}
+
+.post-card-excerpt {
+  max-width: 58ch;
+  color: rgba(104, 91, 82, 0.92);
+  line-height: 1.75;
+}
+
+.post-card-footer {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.post-card-taxonomy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--muted);
+}
+
+.post-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.38rem;
+  margin: 0;
+}
+
+.post-card-tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.55rem;
+  padding: 0.12rem 0.55rem;
+  border: 1px solid rgba(31, 26, 23, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 250, 241, 0.72);
+  color: var(--muted);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+}
+
+.post-card:hover h3,
+.post-card:focus-within h3 {
+  color: rgba(31, 26, 23, 0.94);
 }
 
 .post-card-link,
@@ -738,14 +843,22 @@ pre code {
 }
 
 .reader-settings-body {
-  padding: 0 0.95rem 0.9rem;
-  border-top: 1px solid var(--line);
+  padding: 0.9rem 0.95rem 0.95rem;
 }
 
 .reader-settings-form {
   display: grid;
   gap: 0.9rem;
   padding-top: 0.85rem;
+}
+
+.reader-settings-heading {
+  margin: 0;
+  color: var(--muted);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
 }
 
 .reader-settings-grid {
@@ -955,8 +1068,6 @@ pre code {
 }
 
 .eyebrow,
-.post-card .meta,
-.post-card-meta-item,
 .page-count,
 .back-link,
 .section-link,
@@ -982,8 +1093,6 @@ pre code {
 }
 
 .eyebrow,
-.post-card .meta,
-.post-card-meta-item,
 .page-count,
 .post-meta-item {
   margin: 0;
@@ -1089,9 +1198,175 @@ pre code {
   padding: clamp(1.25rem, 3vw, 2.2rem);
 }
 
+.page-post .post-header {
+  display: grid;
+  gap: 1.3rem;
+  padding-bottom: 1.45rem;
+  margin-bottom: 1.05rem;
+}
+
+.page-post .post-header-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.page-post .post-back-link {
+  min-height: 0;
+  margin-bottom: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+}
+
+.page-post .post-back-link:hover {
+  transform: translateX(-2px);
+  border-color: transparent;
+  background: transparent;
+}
+
+.page-post .post-date-line {
+  margin: 0;
+  color: var(--muted);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.page-post .post-title-block {
+  display: grid;
+  gap: 0.4rem;
+}
+
 .page-post .post-header h1 {
-  max-width: 12ch;
-  font-size: clamp(2rem, 6vw, 3.6rem);
+  max-width: 10ch;
+  font-size: clamp(2.6rem, 8vw, 4.8rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.page-post .post-meta-bar {
+  gap: 0.65rem 1.3rem;
+  align-items: center;
+  margin-bottom: 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(31, 26, 23, 0.08);
+}
+
+.page-post .post-meta-item {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+}
+
+.page-post .post-meta-item--interactive:hover {
+  border-color: transparent;
+  background: transparent;
+}
+
+.page-post .post-meta-label {
+  color: var(--muted);
+}
+
+.page-post .post-meta-value {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.page-post .post-taxonomy {
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.page-post .post-tags {
+  align-items: center;
+  gap: 0.38rem;
+}
+
+.page-post .post-meta-item > .utility-icon,
+.page-post .post-meta-button .utility-icon {
+  color: var(--muted);
+}
+
+.page-post .post-tag {
+  min-height: 1.55rem;
+  padding: 0.15rem 0.56rem;
+  border: 1px solid rgba(31, 26, 23, 0.08);
+  background: rgba(255, 250, 241, 0.72);
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+}
+
+.page-post .post-tag-link {
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.page-post .post-tag-link:hover {
+  transform: translateY(-1px);
+  border-color: rgba(158, 79, 45, 0.2);
+  background: rgba(158, 79, 45, 0.12);
+}
+
+.page-post .post-meta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  margin-left: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    color 180ms ease,
+    opacity 180ms ease;
+}
+
+.page-post .post-meta-button:hover,
+.page-post .post-meta-button:focus-visible,
+.page-post .post-meta-button.is-active,
+.page-post .post-meta-button[aria-expanded="true"] {
+  color: var(--ink);
+  opacity: 1;
+}
+
+.page-post .post-meta-button:hover {
+  transform: translateY(-1px);
+}
+
+.page-post .post-meta-button .utility-icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  min-width: 1.05rem;
+  min-height: 1.05rem;
+}
+
+.page-post .post-meta-button:focus-visible {
+  outline: 2px solid rgba(158, 79, 45, 0.38);
+  outline-offset: 3px;
 }
 
 .prose {
@@ -1169,6 +1444,10 @@ pre code {
   .reader-content {
     column-count: 1;
   }
+
+  .page-post .post-header h1 {
+    max-width: 11ch;
+  }
 }
 
 @media (max-width: 700px) {
@@ -1207,5 +1486,28 @@ pre code {
 
   .post-taxonomy {
     width: 100%;
+  }
+
+  .page-post .post-header {
+    gap: 1rem;
+  }
+
+  .page-post .post-header-topline {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .page-post .post-header h1 {
+    max-width: 11ch;
+    font-size: clamp(2.2rem, 13vw, 3.8rem);
+  }
+
+  .page-post .post-meta-bar {
+    gap: 0.7rem 1rem;
+  }
+
+  .page-post .post-meta-button {
+    margin-left: 0;
   }
 }

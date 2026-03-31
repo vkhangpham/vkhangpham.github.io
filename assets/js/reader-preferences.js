@@ -2,6 +2,7 @@ const initReaderPreferences = () => {
   const settingsRoot = document.querySelector("[data-reader-settings]");
   const form = document.querySelector("[data-reader-form]");
   const readerContent = document.querySelector("[data-reader-content]");
+  const toggleButton = document.querySelector("[data-reader-settings-toggle]");
 
   if (!settingsRoot || !form || !readerContent) {
     return;
@@ -31,8 +32,23 @@ const initReaderPreferences = () => {
     wordsPerLine: settingsRoot.querySelector("[data-reader-output='wordsPerLine']"),
   };
   const rangeInputs = Array.from(form.querySelectorAll(".reader-setting-range"));
+  const firstInput = rangeInputs[0];
 
   const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+  const setPanelOpen = (open, { focusPanel = false } = {}) => {
+    settingsRoot.hidden = !open;
+
+    if (toggleButton) {
+      toggleButton.setAttribute("aria-expanded", open ? "true" : "false");
+      toggleButton.classList.toggle("is-active", open);
+    }
+
+    if (open && focusPanel && firstInput) {
+      window.requestAnimationFrame(() => {
+        firstInput.focus();
+      });
+    }
+  };
   const updateRangeProgress = () => {
     rangeInputs.forEach((input) => {
       const min = Number.parseFloat(input.min);
@@ -142,12 +158,21 @@ const initReaderPreferences = () => {
     }
   };
 
-  settingsRoot.hidden = false;
   settingsRoot.classList.add("is-ready");
+  setPanelOpen(false);
 
   const initialState = getStoredState();
   syncForm(initialState);
   applyState(initialState);
+
+  if (toggleButton) {
+    toggleButton.addEventListener("click", () => {
+      const isOpen = toggleButton.getAttribute("aria-expanded") === "true";
+      setPanelOpen(!isOpen, { focusPanel: !isOpen });
+    });
+  } else {
+    setPanelOpen(true);
+  }
 
   form.addEventListener("input", () => {
     applyState(getFormState());
@@ -161,6 +186,16 @@ const initReaderPreferences = () => {
     window.requestAnimationFrame(() => {
       applyState(defaults);
     });
+  });
+
+  settingsRoot.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !settingsRoot.hidden) {
+      setPanelOpen(false);
+
+      if (toggleButton) {
+        toggleButton.focus();
+      }
+    }
   });
 };
 
