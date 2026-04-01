@@ -233,25 +233,25 @@ When scripts, preview behavior, permalink rules, or writing conventions change, 
 **Area**: frontend
 
 ### Summary
-For small theme controls on this site, use one explicit Tabler icon per mode and reset native button appearance before custom styling.
+For small theme controls on this site, use one official Tabler icon per mode, keep a single placement in shared chrome, and reset native button appearance before custom styling.
 
 ### Details
-The first dark-mode toggle used visible text and overlapping icon states, which the user corrected because the control should read as a single sun or moon depending on the active mode. The initial styling also risked leaking native browser button chrome, especially in WebKit-style browsers, which made the control feel off-brand even when the surrounding layout was correct.
+The first dark-mode toggle used visible text and overlapping icon states, which the user corrected because the control should read as a single icon depending on the active mode. Follow-up corrections showed two more durable issues: the embedded `flame` and `flame-off` paths must be checked against Tabler's official source instead of recreated from memory, and the theme switch should exist only once in the shared header rather than being duplicated inside reader settings. The wording also works better when it follows the site's bonfire metaphor instead of falling back to generic "switch to dark/light mode" copy.
 
 ### Suggested Action
-When adding compact utility controls to this site, prefer a single explicit icon state, keep any descriptive copy screen-reader-only, and set `appearance: none` plus `-webkit-appearance: none` before styling the button.
+When adding compact utility controls to this site, prefer a single explicit icon state, verify SVG paths against the official icon source, keep the control in one shared location unless duplication is explicitly requested, keep any descriptive copy screen-reader-only, and set `appearance: none` plus `-webkit-appearance: none` before styling the button.
 
 ### Metadata
 - Source: user_feedback
-- Related Files: _includes/theme-toggle.html, _layouts/default.html, assets/css/site.css, assets/js/theme-toggle.js
-- Tags: dark-mode, buttons, tabler, safari, accessibility, frontend
+- Related Files: _includes/theme-toggle.html, _includes/reader-controls.html, _layouts/default.html, assets/css/site.css, assets/js/theme-toggle.js
+- Tags: dark-mode, buttons, tabler, safari, accessibility, frontend, tooltips
 - See Also: LRN-20260328-002
 - Pattern-Key: frontend.icon-toggle-single-state
-- Recurrence-Count: 1
+- Recurrence-Count: 2
 - First-Seen: 2026-04-01
 - Last-Seen: 2026-04-01
 
 ### Resolution
 - **Resolved**: 2026-04-01T08:15:00+0700
-- **Commit/PR**: uncommitted
-- **Notes**: Reworked the toggle into an icon-only control with explicit Tabler sun/moon SVGs, added native-button appearance resets, and reverified the light/dark swap plus persisted theme state.
+- **Commit/PR**: 6a064f8 (follow-up tooltip/icon refinements uncommitted)
+- **Notes**: Reworked the toggle into a single icon-only control, removed the duplicate reader-settings switch, replaced remembered icon paths with official Tabler `flame` and `flame-off` SVGs, added native-button appearance resets, and updated the tooltip language to use the bonfire metaphor.
