@@ -20,7 +20,7 @@ Use `./bin/new-post` for an interactive post template, or create the file manual
 
 - Filename format: `YYYY-MM-DD-title.md`
 - Required front matter: `title`
-- Helpful optional front matter: `tags`, `description`, `published: false`
+- Helpful optional front matter: `tags`, `description`, `published: false`, `math: true`
 - Post layout: applied automatically by `_config.yml`
 
 Example:
@@ -37,6 +37,25 @@ Opening paragraph here.
 <!--more-->
 
 Rest of the post here.
+```
+
+## Technical posts with math
+
+Set `math: true` in the front matter for any post or page that should render LaTeX with MathJax.
+
+Example:
+
+```md
+---
+title: "A technical note"
+math: true
+---
+
+Inline math like $E = mc^2$ works in prose.
+
+$$
+\int_0^1 x^2 \, dx = \frac{1}{3}
+$$
 ```
 
 Commit and push to `main` when you are ready to publish. GitHub Pages deploys the site automatically from there.

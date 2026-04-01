@@ -1582,6 +1582,17 @@ pre code {
   margin: 2rem 0;
 }
 
+.prose mjx-container {
+  max-width: 100%;
+}
+
+.prose mjx-container[display="true"] {
+  margin: 1.5rem 0 !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 0.35rem;
+}
+
 @media (max-width: 920px) {
   .home-hero-body--split {
     grid-template-columns: 1fr;
