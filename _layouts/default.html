@@ -15,7 +15,34 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/icons/tabler-campfire-favicon-32x32.png' | relative_url }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/icons/tabler-campfire-favicon-16x16.png' | relative_url }}">
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+    <script>
+      (() => {
+        const root = document.documentElement;
+        const storageKey = "between-bonfires-theme";
+        const isTheme = (value) => value === "light" || value === "dark";
+        let theme = null;
+
+        root.classList.add("has-js");
+
+        try {
+          theme = window.localStorage.getItem(storageKey);
+        } catch (_error) {
+          theme = null;
+        }
+
+        if (!isTheme(theme)) {
+          theme =
+            typeof window.matchMedia === "function" && window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        }
+
+        root.dataset.theme = theme;
+        root.style.colorScheme = theme;
+      })();
+    </script>
     <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+    <script src="{{ '/assets/js/theme-toggle.js' | relative_url }}" defer></script>
     {% if page.post_filters %}
       <script src="{{ '/assets/js/post-filters.js' | relative_url }}" defer></script>
     {% endif %}
@@ -39,23 +66,38 @@
       <header class="site-header">
         <div class="brand-lockup">
           <a class="brand" href="{{ '/' | relative_url }}">
-            <img
+            <svg
               class="brand-icon"
-              src="{{ '/assets/icons/tabler-campfire.svg' | relative_url }}"
-              alt=""
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
               width="28"
               height="28"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              focusable="false"
+              aria-hidden="true"
             >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M4 21l16 -4"></path>
+              <path d="M20 21l-16 -4"></path>
+              <path d="M12 15a4 4 0 0 0 4 -4c0 -3 -2 -3 -2 -8c-4 2 -6 5 -6 8a4 4 0 0 0 4 4"></path>
+            </svg>
             <span>{{ site.title }}</span>
           </a>
           <span class="brand-byline">by {{ site.author }}</span>
         </div>
-        <nav class="site-nav" aria-label="primary">
-          <a href="{{ '/' | relative_url }}"{% if current_url == '/' %} class="is-current" aria-current="page"{% endif %}>home</a>
-          <a href="{{ '/about/' | relative_url }}"{% if current_url == '/about/' %} class="is-current" aria-current="page"{% endif %}>about</a>
-          <a href="{{ '/archive/' | relative_url }}"{% if archive_active %} class="is-current" aria-current="page"{% endif %}>archive</a>
-          <a href="{{ '/feed.xml' | relative_url }}"{% if current_url == '/feed.xml' %} class="is-current" aria-current="page"{% endif %}>rss</a>
-        </nav>
+        <div class="site-actions">
+          <nav class="site-nav" aria-label="primary">
+            <a href="{{ '/' | relative_url }}"{% if current_url == '/' %} class="is-current" aria-current="page"{% endif %}>home</a>
+            <a href="{{ '/about/' | relative_url }}"{% if current_url == '/about/' %} class="is-current" aria-current="page"{% endif %}>about</a>
+            <a href="{{ '/archive/' | relative_url }}"{% if archive_active %} class="is-current" aria-current="page"{% endif %}>archive</a>
+            <a href="{{ '/feed.xml' | relative_url }}"{% if current_url == '/feed.xml' %} class="is-current" aria-current="page"{% endif %}>rss</a>
+          </nav>
+          {% include theme-toggle.html %}
+        </div>
       </header>
 
       <main class="page-shell">

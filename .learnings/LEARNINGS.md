@@ -224,3 +224,34 @@ When scripts, preview behavior, permalink rules, or writing conventions change, 
 - **Resolved**: 2026-03-30T22:32:01+0700
 - **Commit/PR**: uncommitted
 - **Notes**: Refreshed `README.md` to match the live repo workflow and promoted the prevention rule into `AGENTS.md`.
+
+## [LRN-20260401-001] correction
+
+**Logged**: 2026-04-01T08:15:00+0700
+**Priority**: medium
+**Status**: resolved
+**Area**: frontend
+
+### Summary
+For small theme controls on this site, use one explicit Tabler icon per mode and reset native button appearance before custom styling.
+
+### Details
+The first dark-mode toggle used visible text and overlapping icon states, which the user corrected because the control should read as a single sun or moon depending on the active mode. The initial styling also risked leaking native browser button chrome, especially in WebKit-style browsers, which made the control feel off-brand even when the surrounding layout was correct.
+
+### Suggested Action
+When adding compact utility controls to this site, prefer a single explicit icon state, keep any descriptive copy screen-reader-only, and set `appearance: none` plus `-webkit-appearance: none` before styling the button.
+
+### Metadata
+- Source: user_feedback
+- Related Files: _includes/theme-toggle.html, _layouts/default.html, assets/css/site.css, assets/js/theme-toggle.js
+- Tags: dark-mode, buttons, tabler, safari, accessibility, frontend
+- See Also: LRN-20260328-002
+- Pattern-Key: frontend.icon-toggle-single-state
+- Recurrence-Count: 1
+- First-Seen: 2026-04-01
+- Last-Seen: 2026-04-01
+
+### Resolution
+- **Resolved**: 2026-04-01T08:15:00+0700
+- **Commit/PR**: uncommitted
+- **Notes**: Reworked the toggle into an icon-only control with explicit Tabler sun/moon SVGs, added native-button appearance resets, and reverified the light/dark swap plus persisted theme state.
