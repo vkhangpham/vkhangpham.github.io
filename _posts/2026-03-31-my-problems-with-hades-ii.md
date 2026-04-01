@@ -1,7 +1,7 @@
 ---
 title: "my problems with Hades II"
 tags: ["games", "rng"]
-description: "a little rant about Hades the game"
+description: "a critical look at Hades II from someone who loves the first game, focusing on its humor, characters, and where the sequel falls short."
 ---
 
 [Hades](https://www.supergiantgames.com/games/hades) was the game that leads me to my current obsession with rouge-lite games, so I had a lot of expectations for [Hades II](https://www.supergiantgames.com/games/hades-ii).

@@ -5,6 +5,7 @@ A minimal Jekyll blog for GitHub Pages.
 - Site: <https://vkhangpham.github.io>
 - Permalinks: `/:title/`
 - Post excerpts: `<!--more-->`
+- SEO: `jekyll-seo-tag`, `jekyll-sitemap`, `robots.txt`
 
 ## Local workflow
 
@@ -59,6 +60,12 @@ $$
 ```
 
 Commit and push to `main` when you are ready to publish. GitHub Pages deploys the site automatically from there.
+
+## SEO notes
+
+- Shared metadata and JSON-LD come from `jekyll-seo-tag` in `_layouts/default.html`
+- `robots.txt` and `sitemap.xml` help search engines discover the full site
+- Post `description` front matter should be specific, since it is reused in search and social snippets
 
 ## Key files
 

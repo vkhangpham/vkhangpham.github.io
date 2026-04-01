@@ -1,7 +1,7 @@
 ---
 title: "learn languages with an AI agent"
 tags: ["tech"]
-description: "my setup to learn languages"
+description: "how I built a personal AI language tutor for TCF French prep using a coding agent, source materials, progress tracking, and a repeatable study loop."
 ---
 
 despite the universal adoption of AI in almost all digital domain, I have yet to find a good product to learn a new language.

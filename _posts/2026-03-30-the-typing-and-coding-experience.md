@@ -1,7 +1,7 @@
 ---
 title: "the copy-editing experience"
 tags: ["rng", "personal"]
-description: "my overall experience using vim for typing and manual coding"
+description: "a personal take on using Vim for copy-editing and manual coding: what felt inefficient at first, what clicked later, and where it still falls short."
 ---
 
 manual typing and coding was so fun -- until it becomes inefficient.

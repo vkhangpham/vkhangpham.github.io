@@ -1,7 +1,7 @@
 ---
 title: starting fresh
 tags: [personal]
-description: a short note on thinking and writing.
+description: a personal note on rebuilding independent thought through boredom, slower attention, and writing outside social feeds and AI convenience.
 ---
 
 over the years, the frequency that I use the phrase _"I think"_ has decreased, steeply.

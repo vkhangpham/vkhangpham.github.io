@@ -2,11 +2,25 @@ title: between bonfires
 author: Khang Pham
 description: Thoughts on language, intelligence, memory, and the scattered fragments that shape a life.
 url: https://vkhangpham.github.io
+logo: /assets/icons/a-bonfire.svg
 timezone: Asia/Ho_Chi_Minh
 lang: en
 permalink: /:title/
 markdown: kramdown
 excerpt_separator: "<!--more-->"
+twitter:
+  username: vkhangpham
+  card: summary
+social:
+  name: Khang Pham
+  links:
+    - https://github.com/vkhangpham
+    - https://linkedin.com/in/vkhangpham
+    - https://x.com/vkhangpham
+    - https://scholar.google.com/citations?user=T4XjPkkAAAAJ&hl=en
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
 
 defaults:
   - scope:

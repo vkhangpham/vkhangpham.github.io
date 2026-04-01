@@ -1,7 +1,7 @@
 ---
 title: "meaning of the name"
 tags: ["personal"]
-description: 'explanation for the name "between bonfires"'
+description: "why this blog is called between bonfires, and how Souls bonfires became a metaphor for milestones, side quests, and reflection."
 ---
 
 in a Souls game, a **bonfire** is where you can rest, level up, and plan your journey.
