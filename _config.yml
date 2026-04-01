@@ -21,6 +21,11 @@ social:
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
+exclude:
+  - AGENTS.md
+  - README.md
+  - bin
+  - history
 
 defaults:
   - scope:

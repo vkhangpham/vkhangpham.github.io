@@ -66,6 +66,7 @@ Commit and push to `main` when you are ready to publish. GitHub Pages deploys th
 - Shared metadata and JSON-LD come from `jekyll-seo-tag` in `_layouts/default.html`
 - `robots.txt` and `sitemap.xml` help search engines discover the full site
 - Post `description` front matter should be specific, since it is reused in search and social snippets
+- Repo-only docs and tooling paths such as `README.md`, `AGENTS.md`, `bin/`, and `history/` are excluded from the published site
 
 ## Key files
 

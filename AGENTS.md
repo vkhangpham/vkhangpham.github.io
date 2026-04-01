@@ -19,6 +19,7 @@
 ## Documentation
 
 - When repo scripts, preview behavior, permalink rules, or post-writing conventions change, update `README.md` and any related repo guidance in the same task so human-facing docs stay aligned with the live workflow.
+- Keep repo-only docs and tooling paths such as `README.md`, `AGENTS.md`, `bin/`, and `history/` excluded from the published site output.
 
 ## Local Workflow
 
