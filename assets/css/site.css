@@ -1079,7 +1079,7 @@ pre code {
 
 .reader-settings-footer {
   align-items: stretch;
-  padding-top: 0.2rem;
+  padding-top: 0.65rem;
   border-top: 1px solid var(--line-faint);
 }
 
@@ -1157,10 +1157,29 @@ pre code {
   display: inline-grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   width: fit-content;
-  padding: 0.15rem;
+  padding: 0.2rem;
   border: 1px solid var(--line-soft);
-  border-radius: 999px;
+  border-radius: 14px;
   background: var(--surface-strong);
+}
+
+.reader-choice-group--icons {
+  grid-template-columns: repeat(2, minmax(0, auto));
+  width: fit-content;
+}
+
+.reader-choice-group--icons .reader-choice span {
+  min-width: 2.6rem;
+  min-height: 2.35rem;
+  padding: 0.45rem 0.7rem;
+  line-height: 1;
+}
+
+.reader-choice-group--icons .utility-icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  min-width: 1.1rem;
+  min-height: 1.1rem;
 }
 
 .reader-choice {
@@ -1181,7 +1200,7 @@ pre code {
   justify-content: center;
   min-height: 2rem;
   padding: 0.35rem 0.8rem;
-  border-radius: 999px;
+  border-radius: 10px;
 }
 
 .reader-choice span {
@@ -1710,6 +1729,23 @@ pre code {
   border-radius: 18px;
 }
 
+.prose img.inline-emote {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  max-width: none;
+  max-height: none;
+  margin: 0 0.24em;
+  border-radius: 0;
+  box-shadow: none;
+  vertical-align: -0.28em;
+  object-fit: contain;
+}
+
+.page-post .reader-content[data-show-emotes="false"] img.inline-emote {
+  display: none;
+}
+
 .prose blockquote {
   margin: 1.5rem 0;
   padding-left: 1rem;
@@ -1767,7 +1803,7 @@ pre code {
     flex-wrap: wrap;
   }
 
-  .reader-choice-group {
+  .reader-choice-group:not(.reader-choice-group--icons) {
     width: 100%;
   }
 

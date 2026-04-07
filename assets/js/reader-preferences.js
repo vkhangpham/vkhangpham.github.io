@@ -15,6 +15,7 @@ const initReaderPreferences = () => {
     wordSpacing: 0,
     wordsPerLine: 11,
     columns: 1,
+    showEmotes: true,
   };
   const bounds = {
     fontSize: { min: 16, max: 24 },
@@ -35,6 +36,21 @@ const initReaderPreferences = () => {
   const firstInput = rangeInputs[0];
 
   const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+  const normalizeBoolean = (value, fallback) => {
+    if (typeof value === "boolean") {
+      return value;
+    }
+
+    if (value === "true" || value === "1" || value === 1) {
+      return true;
+    }
+
+    if (value === "false" || value === "0" || value === 0) {
+      return false;
+    }
+
+    return fallback;
+  };
   const setPanelOpen = (open, { focusPanel = false } = {}) => {
     settingsRoot.hidden = !open;
 
@@ -70,8 +86,9 @@ const initReaderPreferences = () => {
       bounds.wordsPerLine.max,
     );
     const columns = clamp(Number.parseInt(state.columns, 10) || defaults.columns, bounds.columns.min, bounds.columns.max);
+    const showEmotes = normalizeBoolean(state.showEmotes, defaults.showEmotes);
 
-    return { fontSize, lineHeight, wordSpacing, wordsPerLine, columns };
+    return { fontSize, lineHeight, wordSpacing, wordsPerLine, columns, showEmotes };
   };
 
   const getStoredState = () => {
@@ -97,6 +114,7 @@ const initReaderPreferences = () => {
       wordSpacing: formData.get("wordSpacing"),
       wordsPerLine: formData.get("wordsPerLine"),
       columns: formData.get("columns"),
+      showEmotes: formData.get("showEmotes"),
     });
   };
 
@@ -112,6 +130,12 @@ const initReaderPreferences = () => {
 
     if (checkedColumn) {
       checkedColumn.checked = true;
+    }
+
+    const checkedShowEmotes = form.querySelector(`[name='showEmotes'][value='${nextState.showEmotes ? "true" : "false"}']`);
+
+    if (checkedShowEmotes) {
+      checkedShowEmotes.checked = true;
     }
   };
 
@@ -147,6 +171,7 @@ const initReaderPreferences = () => {
     readerContent.style.setProperty("--reader-word-spacing", `${nextState.wordSpacing}em`);
     readerContent.style.setProperty("--reader-columns", nextState.columns.toString());
     readerContent.style.setProperty("--reader-content-width", `${measureCh}ch`);
+    readerContent.dataset.showEmotes = nextState.showEmotes ? "true" : "false";
 
     updateRangeProgress();
     updateOutputs(nextState);

@@ -4,3 +4,4 @@ _site/
 .sass-cache/
 .bundle/
 vendor/
+assets/.DS_Store

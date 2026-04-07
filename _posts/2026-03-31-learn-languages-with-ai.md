@@ -12,13 +12,13 @@ more specifically, a product that is reliable and personalized enough that I can
 
 in Vietnam, we have 2 famous products that are advertised as English tutoring and test preparation: [ELSA Speak](https://vn.elsaspeak.com/), and [PREP](https://prepedu.com/). I've used both, and tbh, they are just bad. Every lesson and practice feels superficial and overall just don't bring you good value, especially with their prices.
 
-and btw, I want to learn **French** too, not just English.
+and btw, I want to learn **French** too, not just English. <img src="/assets/emotes/french.webp" alt="french" class="inline-emote">
 
 so, after a lot of trials and errors, I decided to set up my own personal AI language tutor.
 
 <u>disclaimer</u>: I'm not affiliated with any of the companies listed. Moreover, this is a personal experience, and by the time I set this up, I'm no longer a beginner in French. So your experience may vary depending on many factors.
 
-okay, so given that, let me explain the criteria and prerequisites. Firstly, my ultimate target is fairly simple: get to **level B2** in the [TCF](https://fr.wikipedia.org/wiki/Test_de_connaissance_du_fran%C3%A7ais) asap, which is a certification necessary for my graduation. I was able to get the level B1 in the previous attempt, so I already knew what I'm doing and was familiar with the test format. The only hiccup is that I haven't touched any French for like, 2 years :)
+okay, so given that, let me explain the criteria and prerequisites. Firstly, my ultimate target is fairly simple: get to **level B2** in the [TCF](https://fr.wikipedia.org/wiki/Test_de_connaissance_du_fran%C3%A7ais) asap, which is a certification necessary for my graduation. I was able to get the level B1 in the previous attempt, so I already knew what I'm doing and was familiar with the test format. The only hiccup is that I haven't touched any French for like, 2 years. <img src="/assets/emotes/caught.webp" alt="caught" class="inline-emote">
 
 so, what I'm looking for is something that:
 
@@ -31,7 +31,7 @@ so, what I'm looking for is something that:
 
 that's quite a lot of boxes to tick, but I find the following setup to work well:
 
-first, I use **a coding agent** instead of a general chatbot. Having used many different kinds of agents and chatbots before, I think that a coding agent is superior to every other form of personal agent. They are better engineered, better supported by the community, and they are way more flexible in problem solving, which you will see shortly. Another reason is that ~~I have an attachment issue with my terminal and I want to do exercise in my adorable vim over my favorite tmux setup~~ I'm more comfortable with a coding agent. I use [Codex](https://openai.com/codex/). I've tried [Claude Code](https://claude.com/solutions/coding), [Manus](https://manus.im/app), and recently [OpenClaw](https://openclaw.ai/) -- but I just like Codex best. To be fair, that [_"You are absolutely right"_ era](https://absolutelyright.lol/) of Claude Code still haunts me, even in my brightest days.
+first, I use **a coding agent** <img src="/assets/emotes/hackermans.webp" alt="hackermans" class="inline-emote"> instead of a general chatbot. Having used many different kinds of agents and chatbots before, I think that a coding agent is superior to every other form of personal agent. They are better engineered, better supported by the community, and they are way more flexible in problem solving, which you will see shortly. Another reason is that ~~I have an attachment issue with my terminal and I want to do exercise in my adorable vim over my favorite tmux setup~~ I'm more comfortable with a coding agent. I use [Codex](https://openai.com/codex/). I've tried [Claude Code](https://claude.com/solutions/coding), [Manus](https://manus.im/app), and recently [OpenClaw](https://openclaw.ai/) -- but I just like Codex best. To be fair, that [_"You are absolutely right"_ era](https://absolutelyright.lol/) of Claude Code still haunts me, even in my brightest days. <img src="/assets/emotes/thevoices.webp" alt="thevoices" class="inline-emote">
 
 next, I gather some **data** that I want my AI to use and reference when teaching me. They are just a bunch of books in PDFs (that I'll never reveal how I got), mostly grammar, vocab, and a few sample tests. These are gonna be the main source of teaching material, and be the grounding for your agent so it doesn't go off course and teach you something irrelevant to the test. Using the books' table of contents is also a good way to guide your agent on how to organize the lessons.
 
@@ -46,10 +46,10 @@ given that now we have the data, we can start setting up the **tools** that the 
    <u>Update 04/04/2026</u>: you can use [Hermes Agent](https://hermes-agent.nousresearch.com/) or [OpenClaw](https://openclaw.ai/) for built-in self-improving skills.
 
 finally, after all the data and tools, you'll need a **workflow**. There is nothing fancy about the word, it simply means _define how you want to study_. Do you want a session-based, where each time you invoke your agent will be a new lesson? Which skill do you want to focus on, vocab, reading, or grammar? Which test are you preparing for? What are your goals?
-This is **the most important part** of the whole process. Take your time, discuss with your agent about it. And remember, you can always change the direction and your preferences with the tools we've set up above.
+This is **the most important part** of the whole process. Take your time, discuss with your agent about it. And remember, you can always change the direction and your preferences with the tools we've set up above. <img src="/assets/emotes/bang.webp" alt="bang" class="inline-emote">
 
 let's take an example of my workflow. I'm preparing for a TCF, targeting B2 level. I've already reached B1, but I haven't used French for a long time. I'm not very busy, so I can finish a lesson in one sitting. So, what I want is a **TCF study loop**: every time I learn is a new lesson of the following modules: _structure de la langue, vocabulaire, compréhension écrite, or mix_. The lesson will start with a warm-up based on my current weaknesses, which in turn are analyzed through practicing with my AI agent. Then comes the main module work; for vocabulary: get vocab from a book or a subject, craft a lesson that explains each one, craft a paragraph to put all the vocab into context, and prepare practice questions. While learning, I will ask for elaboration and clarification of anything I don't understand. Finally, the agent will integrate the results by updating vocab/errors/progression and writing the session journal.
 
-that was a lot of words, you can simply read one real lesson [here](https://github.com/vkhangpham/francais/blob/master/sessions/2026-03-26_tcf_voc.md).
+that was a lot of words, you can simply read one real lesson [here](https://github.com/vkhangpham/francais/blob/master/sessions/2026-03-26_tcf_voc.md). <img src="/assets/emotes/french.webp" alt="french" class="inline-emote">
 
 that's basically how I've been learning languages, and I find the experience better compared to all other commercial products. Of course this method requires a lot more effort, but the ROI is worth it, especially if you can host a local agent for free, or just use [Z.ai](https://z.ai)'s cheapest plan. I think there will definitely be a better way to do it soon, but for now, this is the best I've found.
