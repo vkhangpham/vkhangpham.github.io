@@ -28,4 +28,4 @@ if you want the simplest possible version of the site, start on the [home page](
 
 **pro tip**: you can change the theme of the website by clicking the button on the top right corner, or change many aspects of the blog display by clicking the gear icon in each post. I really want everyone to have a great reading experience, so I tried my best to make it as customizable as possible.
 
-and as a final word, I hope your visiting is memorable. <img src="/assets/emotes/flushedcat.webp" alt="flushedcat" class="inline-emote">
+and as a final word, I hope your visiting is memorable. <img src="/assets/emotes/flushedcat.webp" alt="flushedcat" class="inline-emote"><img src="/assets/emotes/happie.webp" alt="happie" class="inline-emote">
