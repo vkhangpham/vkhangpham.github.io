@@ -4,35 +4,36 @@ layout: default
 {% assign words_per_minute = 180 %}
 {% assign word_count = page.content | markdownify | strip_html | number_of_words %}
 {% assign reading_time = word_count | plus: words_per_minute | minus: 1 | divided_by: words_per_minute | at_least: 1 %}
+{% assign related_limit = 3 %}
 {% assign related_count = 0 %}
 {% capture related_markup %}{% endcapture %}
 {% capture related_candidates %}{% endcapture %}
-{% for candidate in site.posts %}
-  {% unless candidate.url == page.url %}
-    {% assign overlap_count = 0 %}
-    {% assign union_count = candidate.tags | size %}
-    {% for current_tag in page.tags %}
-      {% if candidate.tags contains current_tag %}
-        {% assign overlap_count = overlap_count | plus: 1 %}
-      {% else %}
-        {% assign union_count = union_count | plus: 1 %}
+{% if page.tags and page.tags.size > 0 %}
+  {% for candidate in site.posts %}
+    {% if candidate.url != page.url and candidate.tags and candidate.tags.size > 0 %}
+      {% assign overlap_count = 0 %}
+      {% assign union_count = candidate.tags | size %}
+      {% for current_tag in page.tags %}
+        {% if candidate.tags contains current_tag %}
+          {% assign overlap_count = overlap_count | plus: 1 %}
+        {% else %}
+          {% assign union_count = union_count | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+      {% if overlap_count > 0 %}
+        {% assign related_score = overlap_count | times: 1000 | divided_by: union_count %}
+        {% capture score_key %}0000{{ related_score }}{% endcapture %}
+        {% assign score_key = score_key | slice: -4, 4 %}
+        {% capture timestamp_key %}0000000000{{ candidate.date | date: "%s" }}{% endcapture %}
+        {% assign timestamp_key = timestamp_key | slice: -10, 10 %}
+        {% capture related_candidates %}{{ related_candidates }}{{ score_key }}::{{ timestamp_key }}::{{ candidate.url }}||{% endcapture %}
       {% endif %}
-    {% endfor %}
-    {% if union_count > 0 %}
-      {% assign related_score = overlap_count | times: 1000 | divided_by: union_count %}
-    {% else %}
-      {% assign related_score = 0 %}
     {% endif %}
-    {% capture score_key %}0000{{ related_score }}{% endcapture %}
-    {% assign score_key = score_key | slice: -4, 4 %}
-    {% capture timestamp_key %}0000000000{{ candidate.date | date: "%s" }}{% endcapture %}
-    {% assign timestamp_key = timestamp_key | slice: -10, 10 %}
-    {% capture related_candidates %}{{ related_candidates }}{{ score_key }}::{{ timestamp_key }}::{{ candidate.url }}||{% endcapture %}
-  {% endunless %}
-{% endfor %}
+  {% endfor %}
+{% endif %}
 {% assign ranked_related = related_candidates | split: "||" | sort | reverse %}
 {% for ranked_item in ranked_related %}
-  {% if ranked_item != '' and related_count < 3 %}
+  {% if ranked_item != '' and related_count < related_limit %}
     {% assign ranked_parts = ranked_item | split: "::" %}
     {% assign related_url = ranked_parts[2] %}
     {% for post in site.posts %}
