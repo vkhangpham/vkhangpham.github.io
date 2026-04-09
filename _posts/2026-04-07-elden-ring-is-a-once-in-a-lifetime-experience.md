@@ -1,6 +1,6 @@
 ---
 title: "Elden Ring is a once-in-a-lifetime experience"
-tags: ["games", "elden-ring"]
+tags: ["games", "rng"]
 description: "A personal essay about why Elden Ring became the first game to surpass Skyrim in my heart, despite all of its flaws."
 ---
 
