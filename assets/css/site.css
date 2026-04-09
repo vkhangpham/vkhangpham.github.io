@@ -660,9 +660,10 @@ pre code {
 }
 
 .post-card-excerpt {
-  max-width: 58ch;
+  max-width: min(100%, 70ch);
   color: var(--muted-stronger);
   line-height: 1.75;
+  text-wrap: pretty;
 }
 
 .post-card-footer {
