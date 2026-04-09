@@ -1447,9 +1447,9 @@ pre code {
 }
 
 .page-post .post-header h1 {
-  max-width: 10ch;
-  font-size: clamp(2.6rem, 8vw, 4.8rem);
-  line-height: 0.95;
+  max-width: 14ch;
+  font-size: clamp(2.35rem, 5.8vw, 4.2rem);
+  line-height: 0.96;
   letter-spacing: -0.03em;
   text-wrap: balance;
 }
@@ -1742,6 +1742,30 @@ pre code {
   object-fit: contain;
 }
 
+.prose .tier-list-figure {
+  display: block;
+  width: 100%;
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.prose .tier-list-figure + .tier-list-figure {
+  margin-top: 2rem;
+}
+
+.prose .tier-list-figure > .tier-list-caption {
+  display: block;
+  width: 100%;
+  margin: 0 0 0.55rem;
+  color: var(--muted);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 0.82rem;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  text-align: center;
+}
+
 .page-post .reader-content[data-show-emotes="false"] img.inline-emote {
   display: none;
 }
@@ -1816,7 +1840,7 @@ pre code {
   }
 
   .page-post .post-header h1 {
-    max-width: 11ch;
+    max-width: 13ch;
   }
 }
 
@@ -1879,8 +1903,8 @@ pre code {
   }
 
   .page-post .post-header h1 {
-    max-width: 11ch;
-    font-size: clamp(2.2rem, 13vw, 3.8rem);
+    max-width: 12ch;
+    font-size: clamp(2.1rem, 10vw, 3.35rem);
   }
 
   .page-post .post-meta-bar {
